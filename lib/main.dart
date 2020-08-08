@@ -29,6 +29,7 @@ class MyApp extends StatelessWidget {
             children: <Widget>[
               MenuBar(),
               Header(),
+              FlutterFavorites(),
             ],
           ),
         ),

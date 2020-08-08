@@ -142,3 +142,79 @@ class Header extends StatelessWidget {
     );
   }
 }
+
+class FlutterFavorites extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      width: double.infinity,
+      color: Color(0xFFF5F5F7),
+      child: Center(
+        child: Container(
+          constraints: BoxConstraints(maxWidth: 1110),
+          padding: EdgeInsets.fromLTRB(0, 44, 0, 32),
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text('Flutter Favorites', style: titleTextStyle),
+              RichText(
+                text: TextSpan(
+                  style: TextStyle(color: textPrimaryColor, fontSize: 18),
+                  children: [
+                    TextSpan(
+                      text: 'Packages that demonstrate the ',
+                    ),
+                    TextSpan(
+                        text: 'highest levels of quality',
+                        style: TextStyle(color: linkColor)),
+                    TextSpan(
+                        text: ', selected by the Flutter Ecosystem Committee'),
+                  ],
+                ),
+              ),
+              Padding(padding: EdgeInsets.only(bottom: 18)),
+              GridView.builder(
+                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                    crossAxisCount: 4,
+                    crossAxisSpacing: 16,
+                    childAspectRatio: 1.37),
+                itemCount: 4,
+                shrinkWrap: true,
+                padding: EdgeInsets.fromLTRB(4, 4, 4, 16),
+                itemBuilder: (context, index) {
+                  return PackageCard();
+                },
+              )
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class PackageCard extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      padding: EdgeInsets.fromLTRB(30, 28, 30, 30),
+      decoration: BoxDecoration(
+        boxShadow: [
+          BoxShadow(
+              color: Color(0x4D000000), offset: Offset(0, 2), blurRadius: 5),
+        ],
+        color: Colors.white,
+        borderRadius: BorderRadius.circular(4),
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text('responsive_framework', style: linkTitleTextStyle),
+          Text(
+              'Easily make Flutter apps responsive. Automatically adapt UI to different screen sizes. Responsiveness made simple.'),
+        ],
+      ),
+    );
+  }
+}
