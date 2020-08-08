@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 24.1.1, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg version="1.1" id="logo_x5F_firebase_x5F_192px_x5F_clr"
+	 xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 1080 1080"
+	 style="enable-background:new 0 0 1080 1080;" xml:space="preserve">
+<style type="text/css">
+	.st0{fill:#01579B;}
+	.st1{fill:#40C4FF;}
+	.st2{fill:#29B6F6;}
+	.st3{opacity:0.2;fill:#FFFFFF;enable-background:new    ;}
+	.st4{opacity:0.2;fill:#263238;enable-background:new    ;}
+	.st5{opacity:0.2;fill:url(#SVGID_1_);enable-background:new    ;}
+</style>
+<g>
+	<path class="st0" d="M220.3,859.7L35.5,675C13.6,652.5,0,620.8,0,589.7c0-14.4,8.1-36.8,14.2-49.7l170.5-355.3L220.3,859.7z"/>
+	<path class="st1" d="M852.6,220.3L667.9,35.5C651.8,19.3,618.2,0,589.7,0c-24.4,0-48.4,4.9-63.9,14.2L184.7,184.7L852.6,220.3z"/>
+	<polygon class="st1" points="440.5,1080 888.2,1080 888.2,888.2 554.2,781.6 248.7,888.2 	"/>
+	<path class="st2" d="M184.7,760.3c0,57,7.1,71,35.5,99.5l28.4,28.4h639.5L575.5,532.9L184.7,184.7V760.3z"/>
+	<path class="st0" d="M753.1,184.7H184.7l703.4,703.4H1080V447.6L852.6,220.3C820.7,188.2,792.3,184.7,753.1,184.7z"/>
+	<path class="st3" d="M227.4,866.8c-28.4-28.5-35.5-56.6-35.5-106.6V191.8l-7.1-7.1v575.5C184.7,810.2,184.7,824,227.4,866.8
+		l21.3,21.3l0,0L227.4,866.8z"/>
+	<polygon class="st4" points="1072.9,440.5 1072.9,881.1 881.1,881.1 888.2,888.2 1080,888.2 1080,447.6 	"/>
+	<path class="st3" d="M852.6,220.3c-35.2-35.2-64.1-35.5-106.6-35.5H184.7l7.1,7.1H746C767.3,191.8,820.8,188.3,852.6,220.3
+		L852.6,220.3z"/>
+	
+		<radialGradient id="SVGID_1_" cx="539.9897" cy="540.0051" r="539.9923" gradientTransform="matrix(1 0 0 -1 0 1080.0051)" gradientUnits="userSpaceOnUse">
+		<stop  offset="0" style="stop-color:#FFFFFF;stop-opacity:0.1"/>
+		<stop  offset="1" style="stop-color:#FFFFFF;stop-opacity:0"/>
+	</radialGradient>
+	<path class="st5" d="M1072.9,440.5L852.6,220.3L667.9,35.5C651.8,19.3,618.2,0,589.7,0c-24.4,0-48.4,4.9-63.9,14.2L184.7,184.7
+		L14.2,540C8.1,552.9,0,575.4,0,589.7c0,31,13.6,62.8,35.5,85.3l170.2,169c4.1,5,8.9,10.1,14.5,15.7l7.1,7.1l21.3,21.3l184.7,184.7
+		l7.1,7.1H881h7.1V888.2H1080v-0.5v-440L1072.9,440.5z"/>
+</g>
+</svg>

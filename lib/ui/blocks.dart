@@ -1,5 +1,7 @@
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:pub_dev/components/components.dart';
+import 'package:pub_dev/utils/utils.dart';
 import 'package:responsive_framework/responsive_framework.dart';
 
 class MenuBar extends StatelessWidget {
@@ -7,7 +9,7 @@ class MenuBar extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       height: 50,
-      color: background,
+      color: backgroundColor,
       padding: ResponsiveValue(context,
           defaultValue: EdgeInsets.symmetric(
             horizontal: 35,
@@ -64,6 +66,77 @@ class MenuBar extends StatelessWidget {
               ),
             ),
           ),
+        ],
+      ),
+    );
+  }
+}
+
+class Header extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      width: double.infinity,
+      decoration: BoxDecoration(
+          image: DecorationImage(
+              image: AssetImage('assets/images/bg_header.jpg'),
+              fit: BoxFit.cover)),
+      padding: EdgeInsets.symmetric(vertical: 110),
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Image.asset('assets/images/pub_dev_logo.png', height: 70),
+          Padding(padding: EdgeInsets.only(bottom: 28)),
+          Container(
+            constraints: BoxConstraints(maxWidth: 880),
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(45),
+              color: Color(0xFF34404D),
+            ),
+            margin: EdgeInsets.symmetric(horizontal: 48, vertical: 20),
+            child: TextField(
+              style: TextStyle(color: Colors.white, fontSize: 24),
+              decoration: InputDecoration(
+                  border: InputBorder.none,
+                  hintStyle: TextStyle(color: Color(0xFF888888)),
+                  icon: Padding(
+                    padding: EdgeInsets.only(left: 35),
+                    child:
+                        Icon(Icons.search, color: Color(0xFF888888), size: 24),
+                  ),
+                  hintText: 'Search packages',
+                  isDense: true,
+                  contentPadding: EdgeInsets.fromLTRB(0, 20, 35, 20)),
+            ),
+          ),
+          Padding(
+            padding: EdgeInsets.symmetric(horizontal: 24, vertical: 18),
+            child: RichText(
+              text: TextSpan(
+                  style: TextStyle(fontSize: 18, color: Colors.white),
+                  children: [
+                    TextSpan(text: 'Find and use packages to build '),
+                    TextSpan(
+                        recognizer: TapGestureRecognizer()
+                          ..onTap = () {
+                            openUrl("https://dart.dev");
+                          },
+                        text: 'Dart',
+                        style: TextStyle(color: linkDarkBackgroundColor)),
+                    TextSpan(text: ' and '),
+                    TextSpan(
+                        recognizer: TapGestureRecognizer()
+                          ..onTap = () {
+                            openUrl(
+                                "https://gallery.codelessly.com/flutterwebsites/flutterwebsite");
+                          },
+                        text: 'Flutter',
+                        style: TextStyle(color: linkDarkBackgroundColor)),
+                    TextSpan(text: ' apps.'),
+                  ]),
+            ),
+          )
         ],
       ),
     );

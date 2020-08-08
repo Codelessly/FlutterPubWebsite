@@ -28,6 +28,7 @@ class MyApp extends StatelessWidget {
           child: Column(
             children: <Widget>[
               MenuBar(),
+              Header(),
             ],
           ),
         ),
