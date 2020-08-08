@@ -1,0 +1,30 @@
+name: pub_dev
+description: The pub.dev website recreated in Flutter.
+version: 1.0.0
+
+environment:
+  sdk: ">=2.7.0 <3.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  responsive_framework: ^0.0.8
+  google_fonts: ^1.1.0
+  animations: ^1.1.2
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_launcher_icons: ^0.7.5
+
+flutter_icons:
+  android: true
+  ios: true
+  image_path_android: "assets/dart_logo_full.png"
+  image_path_ios: "assets/dart_logo_full.png"
+  adaptive_icon_background: "#FFFFFFFF"
+  adaptive_icon_foreground: "assets/dart_logo_adaptive.png"
+
+flutter:
+  uses-material-design: true
+  assets:
+    - assets/images/
