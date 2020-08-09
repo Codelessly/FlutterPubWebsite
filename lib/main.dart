@@ -33,18 +33,19 @@ class MyApp extends StatelessWidget {
               FlutterFavorites(),
               // Background squares image container.
               Container(
-                constraints: BoxConstraints(maxWidth: 1480),
+                constraints: BoxConstraints(maxWidth: 1440, minWidth: 1440),
                 decoration: BoxDecoration(
                     image: DecorationImage(
                         image: AssetImage('assets/images/bg_squares.png'),
-                        fit: BoxFit.cover,
-                        alignment: Alignment.topCenter)),
+                        fit: BoxFit.fitWidth,
+                        alignment: Alignment.center)),
                 child: Column(
                   mainAxisSize: MainAxisSize.min,
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     MostPopular(),
-                    Container(height: 400),
+                    TopFlutter(),
+                    TopDart(),
                   ],
                 ),
               ),

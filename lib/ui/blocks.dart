@@ -214,59 +214,197 @@ class FlutterFavorites extends StatelessWidget {
 class MostPopular extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Row(
-      mainAxisSize: MainAxisSize.min,
-      children: [
-        Flexible(
-          child: ConstrainedBox(
-            constraints: BoxConstraints(maxHeight: 240),
-            child: Image.asset('assets/images/image_packages_1.png',
-                fit: BoxFit.contain),
+    return Padding(
+      padding: EdgeInsets.symmetric(vertical: 20, horizontal: 20),
+      child: Row(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          Flexible(
+            child: ConstrainedBox(
+              constraints: BoxConstraints(maxHeight: 280),
+              child: Image.asset('assets/images/image_packages_1.png',
+                  fit: BoxFit.contain),
+            ),
           ),
-        ),
-        Column(
-          mainAxisSize: MainAxisSize.min,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Padding(padding: EdgeInsets.only(bottom: 24)),
-            Text('Most popular packages', style: titleTextStyle),
-            Text('The most downloaded packages over the past 60 days',
-                style: TextStyle(
-                    color: textPrimaryColor, fontSize: 18, height: 1.6)),
-            Padding(padding: EdgeInsets.only(bottom: 10)),
-            Container(
-              constraints: BoxConstraints(maxWidth: 834),
-              child: ResponsiveGridView.builder(
-                gridDelegate: ResponsiveGridDelegate(
-                    crossAxisExtent: 260,
-                    mainAxisSpacing: 16,
-                    crossAxisSpacing: 16,
-                    childAspectRatio: 1.37),
-                maxRowCount: 2,
-                itemCount: 6,
-                shrinkWrap: true,
-                padding: EdgeInsets.fromLTRB(4, 8, 0, 16),
-                alignment: Alignment.center,
-                itemBuilder: (context, index) {
-                  return PackageCard();
-                },
+          Column(
+            mainAxisSize: MainAxisSize.min,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Padding(padding: EdgeInsets.only(bottom: 24)),
+              Text('Most popular packages', style: titleTextStyle),
+              Text('The most downloaded packages over the past 60 days',
+                  style: TextStyle(
+                      color: textPrimaryColor, fontSize: 18, height: 1.6)),
+              Padding(padding: EdgeInsets.only(bottom: 10)),
+              Container(
+                constraints: BoxConstraints(maxWidth: 834),
+                child: ResponsiveGridView.builder(
+                  gridDelegate: ResponsiveGridDelegate(
+                      crossAxisExtent: 260,
+                      mainAxisSpacing: 16,
+                      crossAxisSpacing: 16,
+                      childAspectRatio: 1.37),
+                  maxRowCount: 2,
+                  itemCount: 6,
+                  shrinkWrap: true,
+                  padding: EdgeInsets.fromLTRB(4, 8, 0, 16),
+                  alignment: Alignment.center,
+                  itemBuilder: (context, index) {
+                    return PackageCard();
+                  },
+                ),
+              ),
+              // TODO: Alignment isn't working due to Flutter issue.
+              Align(
+                alignment: Alignment.centerRight,
+                child: Padding(
+                  padding: EdgeInsets.only(right: 16),
+                  child: Text('VIEW ALL',
+                      style: TextStyle(
+                          color: linkColor,
+                          fontSize: 16,
+                          fontWeight: FontWeight.bold)),
+                ),
+              ),
+            ],
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class TopFlutter extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: EdgeInsets.symmetric(vertical: 20, horizontal: 20),
+      child: Row(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          Column(
+            mainAxisSize: MainAxisSize.min,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Padding(padding: EdgeInsets.only(bottom: 24)),
+              Text('Top Flutter packages', style: titleTextStyle),
+              Text('Top packages that extend Flutter with new features',
+                  style: TextStyle(
+                      color: textPrimaryColor, fontSize: 18, height: 1.6)),
+              Padding(padding: EdgeInsets.only(bottom: 10)),
+              Container(
+                constraints: BoxConstraints(maxWidth: 834),
+                child: ResponsiveGridView.builder(
+                  gridDelegate: ResponsiveGridDelegate(
+                      crossAxisExtent: 260,
+                      mainAxisSpacing: 16,
+                      crossAxisSpacing: 16,
+                      childAspectRatio: 1.37),
+                  maxRowCount: 2,
+                  itemCount: 6,
+                  shrinkWrap: true,
+                  padding: EdgeInsets.fromLTRB(4, 8, 0, 16),
+                  alignment: Alignment.center,
+                  itemBuilder: (context, index) {
+                    return PackageCard();
+                  },
+                ),
+              ),
+              // TODO: Alignment isn't working due to Flutter issue.
+              Align(
+                alignment: Alignment.centerRight,
+                child: Padding(
+                  padding: EdgeInsets.only(right: 16),
+                  child: Text('VIEW ALL',
+                      style: TextStyle(
+                          color: linkColor,
+                          fontSize: 16,
+                          fontWeight: FontWeight.bold)),
+                ),
+              ),
+            ],
+          ),
+          Flexible(
+            child: Container(
+              margin: EdgeInsets.only(top: 60),
+              child: ConstrainedBox(
+                constraints: BoxConstraints(maxHeight: 280),
+                child: Image.asset('assets/images/image_packages_2.png',
+                    fit: BoxFit.contain),
               ),
             ),
-            Align(
-              alignment: Alignment.centerRight,
-              child: Padding(
-                padding: EdgeInsets.only(right: 16),
-                child: Text('VIEW ALL',
-                    style: TextStyle(
-                        color: linkColor,
-                        fontSize: 16,
-                        fontWeight: FontWeight.bold)),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class TopDart extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: EdgeInsets.symmetric(vertical: 20, horizontal: 20),
+      child: Row(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          Flexible(
+            child: Container(
+              margin: EdgeInsets.only(top: 60),
+              child: ConstrainedBox(
+                constraints: BoxConstraints(maxHeight: 280),
+                child: Image.asset('assets/images/image_packages_3.png',
+                    fit: BoxFit.contain),
               ),
             ),
-          ],
-        )
-      ],
+          ),
+          Column(
+            mainAxisSize: MainAxisSize.min,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Padding(padding: EdgeInsets.only(bottom: 24)),
+              Text('Top Flutter packages', style: titleTextStyle),
+              Text('Top packages that extend Flutter with new features',
+                  style: TextStyle(
+                      color: textPrimaryColor, fontSize: 18, height: 1.6)),
+              Padding(padding: EdgeInsets.only(bottom: 10)),
+              Container(
+                constraints: BoxConstraints(maxWidth: 834),
+                child: ResponsiveGridView.builder(
+                  gridDelegate: ResponsiveGridDelegate(
+                      crossAxisExtent: 260,
+                      mainAxisSpacing: 16,
+                      crossAxisSpacing: 16,
+                      childAspectRatio: 1.37),
+                  maxRowCount: 2,
+                  itemCount: 6,
+                  shrinkWrap: true,
+                  padding: EdgeInsets.fromLTRB(4, 8, 0, 16),
+                  alignment: Alignment.center,
+                  itemBuilder: (context, index) {
+                    return PackageCard();
+                  },
+                ),
+              ),
+              // TODO: Alignment isn't working due to Flutter issue.
+              Align(
+                alignment: Alignment.centerRight,
+                child: Padding(
+                  padding: EdgeInsets.only(right: 16),
+                  child: Text('VIEW ALL',
+                      style: TextStyle(
+                          color: linkColor,
+                          fontSize: 16,
+                          fontWeight: FontWeight.bold)),
+                ),
+              ),
+            ],
+          ),
+        ],
+      ),
     );
   }
 }
