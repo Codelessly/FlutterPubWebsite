@@ -12,16 +12,17 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Pub.dev',
       builder: (context, widget) => ResponsiveWrapper.builder(
-          ClampingScrollWrapper.builder(context, widget),
-          defaultScale: true,
-          minWidth: 480,
-          defaultName: MOBILE,
-          breakpoints: [
-            ResponsiveBreakpoint.autoScale(480, name: MOBILE),
-            ResponsiveBreakpoint.resize(600, name: MOBILE),
-            ResponsiveBreakpoint.resize(850, name: TABLET),
-            ResponsiveBreakpoint.resize(1080, name: DESKTOP),
-          ]),
+        ClampingScrollWrapper.builder(context, widget),
+        defaultScale: true,
+        minWidth: 480,
+        defaultName: MOBILE,
+        breakpoints: [
+          ResponsiveBreakpoint.autoScale(480, name: MOBILE),
+          ResponsiveBreakpoint.resize(600, name: MOBILE),
+          ResponsiveBreakpoint.resize(850, name: TABLET),
+          ResponsiveBreakpoint.resize(1080, name: DESKTOP),
+        ],
+      ),
       home: Scaffold(
         body: SingleChildScrollView(
           scrollDirection: Axis.vertical,
@@ -30,9 +31,26 @@ class MyApp extends StatelessWidget {
               MenuBar(),
               Header(),
               FlutterFavorites(),
+              // Background squares image container.
+              Container(
+                constraints: BoxConstraints(maxWidth: 1480),
+                decoration: BoxDecoration(
+                    image: DecorationImage(
+                        image: AssetImage('assets/images/bg_squares.png'),
+                        fit: BoxFit.cover,
+                        alignment: Alignment.topCenter)),
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    Container(height: 400),
+                    Container(height: 400),
+                  ],
+                ),
+              ),
             ],
           ),
         ),
+        backgroundColor: Colors.white,
       ),
       debugShowCheckedModeBanner: false,
     );
