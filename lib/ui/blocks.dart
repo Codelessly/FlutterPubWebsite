@@ -176,39 +176,97 @@ class FlutterFavorites extends StatelessWidget {
                   ],
                 ),
               ),
-              Padding(padding: EdgeInsets.only(bottom: 12)),
-              Align(
+              Padding(padding: EdgeInsets.only(bottom: 10)),
+              ResponsiveGridView.builder(
+                gridDelegate: ResponsiveGridDelegate(
+                    crossAxisExtent: 260,
+                    mainAxisSpacing: 16,
+                    crossAxisSpacing: 16,
+                    childAspectRatio: 1.37),
+                maxRowCount: 1,
+                itemCount: 4,
+                shrinkWrap: true,
+                padding: EdgeInsets.fromLTRB(4, 8, 0, 8),
                 alignment: Alignment.center,
-                child: ResponsiveGridView.builder(
-                  gridDelegate: ResponsiveGridDelegate(
-                      crossAxisExtent: 260,
-                      mainAxisSpacing: 16,
-                      crossAxisSpacing: 16,
-                      childAspectRatio: 1.37),
-                  maxRowCount: 1,
-                  itemCount: 10,
-                  shrinkWrap: true,
-                  padding: EdgeInsets.fromLTRB(4, 8, 0, 8),
-                  alignment: Alignment.center,
-                  itemBuilder: (context, index) {
-                    return PackageCard();
-                  },
-                ),
+                itemBuilder: (context, index) {
+                  return PackageCard();
+                },
               ),
               Align(
-                  alignment: Alignment.centerRight,
-                  child: Padding(
-                    padding: EdgeInsets.only(right: 16),
-                    child: Text('VIEW ALL',
-                        style: TextStyle(
-                            color: linkColor,
-                            fontSize: 16,
-                            fontWeight: FontWeight.bold)),
-                  )),
+                alignment: Alignment.centerRight,
+                child: Padding(
+                  padding: EdgeInsets.only(right: 16),
+                  child: Text('VIEW ALL',
+                      style: TextStyle(
+                          color: linkColor,
+                          fontSize: 16,
+                          fontWeight: FontWeight.bold)),
+                ),
+              ),
             ],
           ),
         ),
       ),
+    );
+  }
+}
+
+class MostPopular extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        Flexible(
+          child: ConstrainedBox(
+            constraints: BoxConstraints(maxHeight: 240),
+            child: Image.asset('assets/images/image_packages_1.png',
+                fit: BoxFit.contain),
+          ),
+        ),
+        Column(
+          mainAxisSize: MainAxisSize.min,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Padding(padding: EdgeInsets.only(bottom: 24)),
+            Text('Most popular packages', style: titleTextStyle),
+            Text('The most downloaded packages over the past 60 days',
+                style: TextStyle(
+                    color: textPrimaryColor, fontSize: 18, height: 1.6)),
+            Padding(padding: EdgeInsets.only(bottom: 10)),
+            Container(
+              constraints: BoxConstraints(maxWidth: 834),
+              child: ResponsiveGridView.builder(
+                gridDelegate: ResponsiveGridDelegate(
+                    crossAxisExtent: 260,
+                    mainAxisSpacing: 16,
+                    crossAxisSpacing: 16,
+                    childAspectRatio: 1.37),
+                maxRowCount: 2,
+                itemCount: 6,
+                shrinkWrap: true,
+                padding: EdgeInsets.fromLTRB(4, 8, 0, 16),
+                alignment: Alignment.center,
+                itemBuilder: (context, index) {
+                  return PackageCard();
+                },
+              ),
+            ),
+            Align(
+              alignment: Alignment.centerRight,
+              child: Padding(
+                padding: EdgeInsets.only(right: 16),
+                child: Text('VIEW ALL',
+                    style: TextStyle(
+                        color: linkColor,
+                        fontSize: 16,
+                        fontWeight: FontWeight.bold)),
+              ),
+            ),
+          ],
+        )
+      ],
     );
   }
 }

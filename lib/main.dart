@@ -41,8 +41,9 @@ class MyApp extends StatelessWidget {
                         alignment: Alignment.topCenter)),
                 child: Column(
                   mainAxisSize: MainAxisSize.min,
+                  crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    Container(height: 400),
+                    MostPopular(),
                     Container(height: 400),
                   ],
                 ),
