@@ -10,7 +10,7 @@ class MenuBar extends StatelessWidget {
     return Container(
       height: 50,
       color: backgroundColor,
-      padding: ResponsiveValue(context,
+      padding: ResponsiveValue<EdgeInsets>(context,
           defaultValue: EdgeInsets.symmetric(
             horizontal: 35,
           ),
@@ -160,7 +160,8 @@ class FlutterFavorites extends StatelessWidget {
               Text('Flutter Favorites', style: titleTextStyle),
               RichText(
                 text: TextSpan(
-                  style: TextStyle(color: textPrimaryColor, fontSize: 18),
+                  style: TextStyle(
+                      color: textPrimaryColor, fontSize: 18, height: 1.6),
                   children: [
                     TextSpan(
                       text: 'Packages that demonstrate the ',
@@ -181,11 +182,18 @@ class FlutterFavorites extends StatelessWidget {
                     childAspectRatio: 1.37),
                 itemCount: 4,
                 shrinkWrap: true,
-                padding: EdgeInsets.fromLTRB(4, 4, 4, 16),
+                padding: EdgeInsets.fromLTRB(4, 4, 4, 8),
                 itemBuilder: (context, index) {
                   return PackageCard();
                 },
-              )
+              ),
+              Align(
+                  alignment: Alignment.centerRight,
+                  child: Text('VIEW ALL',
+                      style: TextStyle(
+                          color: linkColor,
+                          fontSize: 16,
+                          fontWeight: FontWeight.bold))),
             ],
           ),
         ),
@@ -198,7 +206,7 @@ class PackageCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.fromLTRB(30, 28, 30, 30),
+      padding: EdgeInsets.fromLTRB(30, 24, 30, 30),
       decoration: BoxDecoration(
         boxShadow: [
           BoxShadow(
@@ -212,7 +220,25 @@ class PackageCard extends StatelessWidget {
         children: [
           Text('responsive_framework', style: linkTitleTextStyle),
           Text(
-              'Easily make Flutter apps responsive. Automatically adapt UI to different screen sizes. Responsiveness made simple.'),
+              'Easily make Flutter apps responsive. Automatically adapt UI to different screen sizes. Responsiveness made simple.',
+              style:
+                  TextStyle(color: textPrimaryColor, fontSize: 14, height: 1.6),
+              maxLines: 3,
+              overflow: TextOverflow.clip),
+          Padding(padding: EdgeInsets.only(bottom: 20)),
+          Row(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              Image.asset('assets/images/icon_verified_publisher.png',
+                  width: 14, height: 16),
+              Padding(padding: EdgeInsets.only(right: 4)),
+              GestureDetector(
+                onTap: () => openUrl('https://codelessly.com'),
+                child: Text('codelessly.com',
+                    style: TextStyle(color: linkColor, fontSize: 12)),
+              ),
+            ],
+          ),
         ],
       ),
     );

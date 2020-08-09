@@ -12,7 +12,7 @@ const TextStyle titleTextStyle = TextStyle(
     fontSize: 36, color: textTitleColor, height: 1.6, fontFamily: fontFamily);
 
 const TextStyle linkTitleTextStyle = TextStyle(
-    fontSize: 20, color: linkTitleColor, height: 1.5, fontFamily: fontFamily);
+    fontSize: 20, color: linkTitleColor, height: 1.6, fontFamily: fontFamily);
 
 const TextStyle bodyTextStyle = TextStyle(
     fontSize: 14, color: textPrimaryColor, height: 1.5, fontFamily: "Roboto");
