@@ -250,9 +250,9 @@ packages:
   responsive_framework:
     dependency: "direct main"
     description:
-      name: responsive_framework
-      url: "https://pub.dartlang.org"
-    source: hosted
+      path: responsive_framework
+      relative: true
+    source: path
     version: "0.0.8"
   sky_engine:
     dependency: transitive
