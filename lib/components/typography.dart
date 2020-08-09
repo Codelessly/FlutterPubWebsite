@@ -3,7 +3,7 @@ import 'package:flutter/painting.dart';
 
 import 'components.dart';
 
-// Step 2: Create reuseable text styles (fonts, text sizes, and colors).
+//Create reuseable text styles (fonts, text sizes, and colors).
 
 const String fontFamily = 'Google Sans';
 
@@ -16,3 +16,9 @@ const TextStyle linkTitleTextStyle = TextStyle(
 
 const TextStyle bodyTextStyle = TextStyle(
     fontSize: 14, color: textPrimaryColor, height: 1.5, fontFamily: "Roboto");
+
+const TextStyle footerLinkTextStyle = TextStyle(
+    fontSize: 14,
+    color: textWhiteDarkBackgroundColor,
+    height: 1.6,
+    fontFamily: "Roboto");

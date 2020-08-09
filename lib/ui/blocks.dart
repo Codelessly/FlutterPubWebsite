@@ -33,7 +33,8 @@ class MenuBar extends StatelessWidget {
             visibleWhen: [Condition.smallerThan(name: TABLET)],
             child: IconButton(
               onPressed: () {},
-              icon: Icon(Icons.menu, color: Color(0xFFF8F9FA), size: 24),
+              icon: Icon(Icons.menu,
+                  color: textWhiteDarkBackgroundColor, size: 24),
             ),
           ),
           ResponsiveVisibility(
@@ -44,7 +45,8 @@ class MenuBar extends StatelessWidget {
               padding: EdgeInsets.fromLTRB(0, 8, 0, 8),
               child: Text(
                 'Sign in',
-                style: TextStyle(fontSize: 14, color: Color(0xFFF8F9FA)),
+                style: TextStyle(
+                    fontSize: 14, color: textWhiteDarkBackgroundColor),
               ),
             ),
           ),
@@ -59,7 +61,8 @@ class MenuBar extends StatelessWidget {
                 children: [
                   Text(
                     'Help',
-                    style: TextStyle(fontSize: 14, color: Color(0xFFF8F9FA)),
+                    style: TextStyle(
+                        fontSize: 14, color: textWhiteDarkBackgroundColor),
                   ),
                   Icon(Icons.keyboard_arrow_down,
                       color: Color(0xFF757575), size: 18),
@@ -260,11 +263,15 @@ class MostPopular extends StatelessWidget {
                 alignment: Alignment.centerRight,
                 child: Padding(
                   padding: EdgeInsets.only(right: 16),
-                  child: Text('VIEW ALL',
-                      style: TextStyle(
-                          color: linkColor,
-                          fontSize: 16,
-                          fontWeight: FontWeight.bold)),
+                  child: GestureDetector(
+                    onTap: () =>
+                        openUrl('https://pub.dev/packages?sort=popularity'),
+                    child: Text('VIEW ALL',
+                        style: TextStyle(
+                            color: linkColor,
+                            fontSize: 16,
+                            fontWeight: FontWeight.bold)),
+                  ),
                 ),
               ),
             ],
@@ -317,11 +324,14 @@ class TopFlutter extends StatelessWidget {
                 alignment: Alignment.centerRight,
                 child: Padding(
                   padding: EdgeInsets.only(right: 16),
-                  child: Text('VIEW ALL',
-                      style: TextStyle(
-                          color: linkColor,
-                          fontSize: 16,
-                          fontWeight: FontWeight.bold)),
+                  child: GestureDetector(
+                    onTap: () => openUrl('https://pub.dev/flutter/packages'),
+                    child: Text('VIEW ALL',
+                        style: TextStyle(
+                            color: linkColor,
+                            fontSize: 16,
+                            fontWeight: FontWeight.bold)),
+                  ),
                 ),
               ),
             ],
@@ -394,11 +404,14 @@ class TopDart extends StatelessWidget {
                 alignment: Alignment.centerRight,
                 child: Padding(
                   padding: EdgeInsets.only(right: 16),
-                  child: Text('VIEW ALL',
-                      style: TextStyle(
-                          color: linkColor,
-                          fontSize: 16,
-                          fontWeight: FontWeight.bold)),
+                  child: GestureDetector(
+                    onTap: () => openUrl('https://pub.dev/dart/packages'),
+                    child: Text('VIEW ALL',
+                        style: TextStyle(
+                            color: linkColor,
+                            fontSize: 16,
+                            fontWeight: FontWeight.bold)),
+                  ),
                 ),
               ),
             ],
@@ -445,6 +458,124 @@ class PackageCard extends StatelessWidget {
                     style: TextStyle(color: linkColor, fontSize: 12)),
               ),
             ],
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class Footer extends StatelessWidget {
+  EdgeInsetsGeometry linkTextPadding =
+      const EdgeInsets.symmetric(horizontal: 8);
+  Widget divider = const SizedBox(
+    height: 18,
+    child: const VerticalDivider(
+      color: textWhiteDarkBackgroundColor,
+      thickness: 1,
+    ),
+  );
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      width: double.infinity,
+      color: backgroundColor,
+      padding: EdgeInsets.fromLTRB(16, 29, 16, 25),
+      child: Wrap(
+        alignment: WrapAlignment.center,
+        runSpacing: 4,
+        children: [
+          GestureDetector(
+            onTap: () => openUrl('https://dart.dev/'),
+            child: Padding(
+              padding: linkTextPadding,
+              child: Text(
+                'Dart language',
+                style: footerLinkTextStyle,
+              ),
+            ),
+          ),
+          divider,
+          GestureDetector(
+            onTap: () => openUrl('https://pub.dev/policy'),
+            child: Padding(
+              padding: linkTextPadding,
+              child: Text(
+                'Policy',
+                style: footerLinkTextStyle,
+              ),
+            ),
+          ),
+          divider,
+          GestureDetector(
+            onTap: () =>
+                openUrl('https://www.google.com/intl/en/policies/terms/'),
+            child: Padding(
+              padding: linkTextPadding,
+              child: Text(
+                'Terms',
+                style: footerLinkTextStyle,
+              ),
+            ),
+          ),
+          divider,
+          GestureDetector(
+            onTap: () => openUrl('https://pub.dev/security'),
+            child: Padding(
+              padding: linkTextPadding,
+              child: Text(
+                'Security',
+                style: footerLinkTextStyle,
+              ),
+            ),
+          ),
+          divider,
+          GestureDetector(
+            onTap: () =>
+                openUrl('https://www.google.com/intl/en/policies/privacy/'),
+            child: Padding(
+              padding: linkTextPadding,
+              child: Text(
+                'Privacy',
+                style: footerLinkTextStyle,
+              ),
+            ),
+          ),
+          divider,
+          GestureDetector(
+            onTap: () => openUrl('https://pub.dev/help'),
+            child: Padding(
+              padding: linkTextPadding,
+              child: Text(
+                'Help',
+                style: footerLinkTextStyle,
+              ),
+            ),
+          ),
+          divider,
+          Padding(padding: EdgeInsets.only(right: 6)),
+          GestureDetector(
+            onTap: () => openUrl('https://pub.dev/feed.atom'),
+            child: Padding(
+              padding: EdgeInsets.symmetric(horizontal: 6),
+              child: ImageIcon(
+                AssetImage('assets/images/icon_rss_feed.png'),
+                color: textWhiteDarkBackgroundColor,
+                size: 20,
+              ),
+            ),
+          ),
+          GestureDetector(
+            onTap: () => openUrl(
+                'https://github.com/dart-lang/pub-dev/issues/new?body=URL%3A+https%3A%2F%2Fpub.dev%2F%0A%0A%3CDescribe+your+issue+or+suggestion+here%3E&title=%3CSummarize+your+issues+here%3E&labels=Area%3A+site+feedback'),
+            child: Padding(
+              padding: EdgeInsets.symmetric(horizontal: 6),
+              child: ImageIcon(
+                AssetImage('assets/images/icon_bug_report.png'),
+                color: textWhiteDarkBackgroundColor,
+                size: 20,
+              ),
+            ),
           ),
         ],
       ),
