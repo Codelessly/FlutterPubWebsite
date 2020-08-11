@@ -10,15 +10,16 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Pub.dev',
+      title: 'Dart packages',
       builder: (context, widget) => ResponsiveWrapper.builder(
         ClampingScrollWrapper.builder(context, widget),
         defaultScale: true,
-        minWidth: 480,
+        minWidth: 360,
         defaultName: MOBILE,
         breakpoints: [
-          ResponsiveBreakpoint.autoScale(480, name: MOBILE),
-          ResponsiveBreakpoint.resize(600, name: MOBILE),
+          ResponsiveBreakpoint.resize(360),
+          ResponsiveBreakpoint.resize(480, name: MOBILE),
+          ResponsiveBreakpoint.resize(640, name: "MOBILE_LARGE"),
           ResponsiveBreakpoint.resize(850, name: TABLET),
           ResponsiveBreakpoint.resize(1080, name: DESKTOP),
         ],
