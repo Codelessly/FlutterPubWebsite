@@ -10,3 +10,11 @@ Future<bool> openUrl(String url, {bool newWindow = false}) async {
     return false;
   }
 }
+
+String buildPackageUrlFromName(String name) {
+  return 'https://pub.dev/packages/$name';
+}
+
+String buildPublisherUrlFromName(String name) {
+  return 'https://pub.dev/publishers/$name/packages';
+}

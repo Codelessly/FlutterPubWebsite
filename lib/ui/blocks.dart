@@ -2,6 +2,8 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:pub_dev/components/components.dart';
+import 'package:pub_dev/model/model_package.dart';
+import 'package:pub_dev/packages_data.dart';
 import 'package:pub_dev/utils/utils.dart';
 import 'package:responsive_framework/responsive_framework.dart';
 
@@ -187,12 +189,12 @@ class FlutterFavorites extends StatelessWidget {
                     crossAxisSpacing: 16,
                     childAspectRatio: 1.37),
                 maxRowCount: 1,
-                itemCount: 4,
+                itemCount: favoritePackages.length,
                 shrinkWrap: true,
                 padding: EdgeInsets.fromLTRB(4, 8, 0, 8),
                 alignment: Alignment.center,
                 itemBuilder: (context, index) {
-                  return PackageCard();
+                  return PackageCard(package: favoritePackages[index]);
                 },
               ),
               Align(
@@ -221,6 +223,7 @@ class MostPopular extends StatelessWidget {
       padding: EdgeInsets.symmetric(vertical: 20, horizontal: 20),
       child: Row(
         mainAxisSize: MainAxisSize.min,
+        mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Flexible(
             child: ConstrainedBox(
@@ -249,12 +252,12 @@ class MostPopular extends StatelessWidget {
                       crossAxisSpacing: 16,
                       childAspectRatio: 1.37),
                   maxRowCount: 2,
-                  itemCount: 6,
+                  itemCount: popularPackages.length,
                   shrinkWrap: true,
                   padding: EdgeInsets.fromLTRB(4, 8, 0, 16),
                   alignment: Alignment.center,
                   itemBuilder: (context, index) {
-                    return PackageCard();
+                    return PackageCard(package: popularPackages[index]);
                   },
                 ),
               ),
@@ -289,6 +292,7 @@ class TopFlutter extends StatelessWidget {
       padding: EdgeInsets.symmetric(vertical: 20, horizontal: 20),
       child: Row(
         mainAxisSize: MainAxisSize.min,
+        mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Column(
             mainAxisSize: MainAxisSize.min,
@@ -310,12 +314,12 @@ class TopFlutter extends StatelessWidget {
                       crossAxisSpacing: 16,
                       childAspectRatio: 1.37),
                   maxRowCount: 2,
-                  itemCount: 6,
+                  itemCount: topFlutterPackages.length,
                   shrinkWrap: true,
                   padding: EdgeInsets.fromLTRB(4, 8, 0, 16),
                   alignment: Alignment.center,
                   itemBuilder: (context, index) {
-                    return PackageCard();
+                    return PackageCard(package: topFlutterPackages[index]);
                   },
                 ),
               ),
@@ -359,6 +363,7 @@ class TopDart extends StatelessWidget {
       padding: EdgeInsets.symmetric(vertical: 20, horizontal: 20),
       child: Row(
         mainAxisSize: MainAxisSize.min,
+        mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Flexible(
             child: Container(
@@ -376,8 +381,8 @@ class TopDart extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Padding(padding: EdgeInsets.only(bottom: 24)),
-              Text('Top Flutter packages', style: titleTextStyle),
-              Text('Top packages that extend Flutter with new features',
+              Text('Top Dart packages', style: titleTextStyle),
+              Text('Top packages for any Dart-based app or program',
                   style: TextStyle(
                       color: textPrimaryColor, fontSize: 18, height: 1.6)),
               Padding(padding: EdgeInsets.only(bottom: 10)),
@@ -390,12 +395,12 @@ class TopDart extends StatelessWidget {
                       crossAxisSpacing: 16,
                       childAspectRatio: 1.37),
                   maxRowCount: 2,
-                  itemCount: 6,
+                  itemCount: topDartPackages.length,
                   shrinkWrap: true,
                   padding: EdgeInsets.fromLTRB(4, 8, 0, 16),
                   alignment: Alignment.center,
                   itemBuilder: (context, index) {
-                    return PackageCard();
+                    return PackageCard(package: topDartPackages[index]);
                   },
                 ),
               ),
@@ -423,6 +428,10 @@ class TopDart extends StatelessWidget {
 }
 
 class PackageCard extends StatelessWidget {
+  final PackageModel package;
+
+  const PackageCard({Key key, @required this.package}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -438,27 +447,34 @@ class PackageCard extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text('responsive_framework', style: linkTitleTextStyle),
-          Text(
-              'Easily make Flutter apps responsive. Automatically adapt UI to different screen sizes. Responsiveness made simple.',
-              style:
-                  TextStyle(color: textPrimaryColor, fontSize: 14, height: 1.6),
-              maxLines: 3,
-              overflow: TextOverflow.clip),
-          Padding(padding: EdgeInsets.only(bottom: 20)),
-          Row(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              Image.asset('assets/images/icon_verified_publisher.png',
-                  width: 14, height: 16),
-              Padding(padding: EdgeInsets.only(right: 4)),
-              GestureDetector(
-                onTap: () => openUrl('https://codelessly.com'),
-                child: Text('codelessly.com',
-                    style: TextStyle(color: linkColor, fontSize: 12)),
-              ),
-            ],
+          GestureDetector(
+              onTap: () => openUrl(buildPackageUrlFromName(package.name)),
+              child: Text(package.name,
+                  style: linkTitleTextStyle, overflow: TextOverflow.ellipsis)),
+          Expanded(
+            child: Text(package.description,
+                style: TextStyle(
+                    color: textPrimaryColor, fontSize: 14, height: 1.6),
+                maxLines: 3,
+                overflow: TextOverflow.clip),
           ),
+          Padding(padding: EdgeInsets.only(bottom: 16)),
+          if (package.publisher.isNotEmpty)
+            Row(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                Image.asset('assets/images/icon_verified_publisher.png',
+                    width: 14, height: 16),
+                Padding(padding: EdgeInsets.only(right: 4)),
+                GestureDetector(
+                  onTap: () =>
+                      openUrl(buildPublisherUrlFromName(package.publisher)),
+                  child: Text(package.publisher,
+                      style: TextStyle(color: linkColor, fontSize: 12)),
+                ),
+              ],
+            ),
+          Padding(padding: EdgeInsets.only(bottom: 8)),
         ],
       ),
     );
