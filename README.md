@@ -1,8 +1,8 @@
 [![Pub.dev Cover](screenshots/Pub%20Website%20Cover.png)](https://gallery.codelessly.com/flutterwebsites/pub?utm_medium=image&utm_campaign=cover)
 # [Pub.dev Website - Rebuilt in Flutter](https://gallery.codelessly.com/flutterwebsites/pub)
-[![Flutter Responsive](https://img.shields.io/badge/flutter-responsive-brightgreen.svg?style=flat-square)](https://github.com/Codelessly/ResponsiveFramework) [![GitHub release](https://img.shields.io/github/release/Codelessly/FlutterWebsite.svg?style=flat-square)](https://github.com/Codelessly/FlutterWebsite/releases) [![GitHub Release Date](https://img.shields.io/github/release-date/Codelessly/FlutterWebsite.svg?style=flat-square)](https://github.com/Codelessly/FlutterWebsite/releases) [![GitHub issues](https://img.shields.io/github/issues/Codelessly/FlutterWebsite.svg?style=flat-square)](https://github.com/Codelessly/FlutterWebsite/issues) [![GitHub top language](https://img.shields.io/github/languages/top/Codelessly/FlutterWebsite.svg?style=flat-square)](https://github.com/Codelessly/FlutterWebsite) [![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/Codelessly/FlutterWebsite.svg?style=flat-square)](https://github.com/Codelessly/FlutterWebsite) [![Libraries.io for GitHub](https://img.shields.io/librariesio/github/Codelessly/FlutterWebsite.svg?style=flat-square)](https://libraries.io/github/Codelessly/FlutterWebsite) [![License](https://img.shields.io/badge/License-BSD%200--Clause-orange.svg?style=flat-square)](https://opensource.org/licenses/0BSD)
+[![Flutter Responsive](https://img.shields.io/badge/flutter-responsive-brightgreen.svg?style=flat-square)](https://github.com/Codelessly/ResponsiveFramework) [![GitHub release](https://img.shields.io/github/release/Codelessly/FlutterPubWebsite.svg?style=flat-square)](https://github.com/Codelessly/FlutterPubWebsite/releases) [![GitHub Release Date](https://img.shields.io/github/release-date/Codelessly/FlutterPubWebsite.svg?style=flat-square)](https://github.com/Codelessly/FlutterPubWebsite/releases) [![GitHub issues](https://img.shields.io/github/issues/Codelessly/FlutterPubWebsite.svg?style=flat-square)](https://github.com/Codelessly/FlutterPubWebsite/issues) [![GitHub top language](https://img.shields.io/github/languages/top/Codelessly/FlutterPubWebsite.svg?style=flat-square)](https://github.com/Codelessly/FlutterPubWebsite) [![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/Codelessly/FlutterPubWebsite.svg?style=flat-square)](https://github.com/Codelessly/FlutterPubWebsite) [![Libraries.io for GitHub](https://img.shields.io/librariesio/github/Codelessly/FlutterPubWebsite.svg?style=flat-square)](https://libraries.io/github/Codelessly/FlutterPubWebsite) [![License](https://img.shields.io/badge/License-BSD%200--Clause-orange.svg?style=flat-square)](https://opensource.org/licenses/0BSD)
 
-<img src="web/icons/Icon-192.png" width="128">
+<a href="https://gallery.codelessly.com/flutterwebsites/pub?utm_medium=image&utm_campaign=logo"><img src="web/icons/Icon-192.png" width="128"></a>
 
 > ### The pub.dev website, rebuilt in Flutter with 💙!
 
@@ -26,9 +26,13 @@ Pub.dev was recreated in Flutter for 3 primary reasons:
 
 ## The Build
 
-I envisioned this build as a weekend project and estimated that it would take less than 20 hours. Unfortunately, replicating some web behavior took a bit longer than I expected and the build ended up taking 27 hours.
+![Screenshots](screenshots/Pub%20Packages%20Resize.gif)
 
-Because I had built a few Flutter websites before, I factored in my increased proficiency and speed. Also, since I've already solved many Flutter web challenges with the Responsive Framework, I estimated that would save me even more time.
+I envisioned this build as a weekend project and estimated that it would take less than 20 hours. Unfortunately, replicating some web behavior took a bit longer than I expected (see above) and the build ended up taking 27 hours.
+
+I thought my experience building Flutter websites would make development much faster but that was not the case. Fortunately, many of the base essential Flutter web challenges were already solved with the Responsive Framework. Using the Responsive Framework saved at least a dozen hours.
+
+Build breakdown:
 
 - **Website elements (14h)**
   - New project setup and icons (1.5h)
@@ -44,12 +48,45 @@ Because I had built a few Flutter websites before, I factored in my increased pr
 - **Publishing (7h)**
   - Code cleanup and testing (2h)
   - Writeup and screenshots (5h)
+  
+## ResponsiveGridView
+
+ResponsiveGridView is a GridView with responsive capabilities and the newest addition to the Responsive Framework.
+
+ResponsiveGridView extends 'GridView' with the following capabilities:
+
+- Fixed item size.
+- Max or min item size.
+- Fixed row count.
+- Alignment controls.
+
+
+
+```dart
+ResponsiveGridView.builder(
+  gridDelegate: ResponsiveGridDelegate(
+      crossAxisExtent: 260,
+      mainAxisSpacing: 16,
+      crossAxisSpacing: 16,
+      childAspectRatio: 1.37),
+  maxRowCount: 1,
+  itemCount: favoritePackages.length,
+  alignment: Alignment.center,
+  itemBuilder: (context, index) {
+    return PackageCard(package: favoritePackages[index]);
+  },
+)
+```
+
+ResponsiveGridView provides more fine-grained control over item positioning than a regular GridView.
 
 ## Final Thoughts
 
+![Screenshots](screenshots/Pub%20Search.gif)
+
 Flutter Web is not an out of the box solution that lets anyone create a website easily. Flutter widgets are obviously built for mobile and replicating simple web behavior requires creative thinking or writing custom widgets. Writing custom widgets such as reimplementing a GridView takes  time and requires a level of familiarity with Flutter.
 
-However, building websites with Flutter has many advantages over traditional web development such as dramatically lower maintenance costs and high visual fidelity. In these early days, the lack of off-the-shelf Flutter Web components necessitates writing components ourselves which takes a long time.
+However, building websites with Flutter has many advantages over traditional web development such as dramatically lower maintenance costs and high visual fidelity. In the early days, the lack of off-the-shelf Flutter Web components necessitates writing components ourselves which takes a long time. At the time of this writing, at least 500 hours have been spent on developing the Responsive Framework.
 
 As for Codelessly, this experiment has demonstrated there is an opportunity to make Flutter web development simpler and dramatically decrease development time. Instead of a website build taking over 20 hours, building a production-level frontend should take less than 20 minutes.
 
