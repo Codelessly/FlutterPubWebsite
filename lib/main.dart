@@ -19,7 +19,7 @@ class MyApp extends StatelessWidget {
         breakpoints: [
           ResponsiveBreakpoint.resize(360),
           ResponsiveBreakpoint.resize(480, name: MOBILE),
-          ResponsiveBreakpoint.resize(640, name: "MOBILE_LARGE"),
+          ResponsiveBreakpoint.resize(640, name: 'MOBILE_LARGE'),
           ResponsiveBreakpoint.resize(850, name: TABLET),
           ResponsiveBreakpoint.resize(1080, name: DESKTOP),
         ],
@@ -27,32 +27,38 @@ class MyApp extends StatelessWidget {
       home: Scaffold(
         body: SingleChildScrollView(
           scrollDirection: Axis.vertical,
-          child: Column(
-            children: <Widget>[
-              MenuBar(),
-              Header(),
-              FlutterFavorites(),
-              // Background squares image container.
-              Container(
-                constraints: BoxConstraints(maxWidth: 1440, minWidth: 1440),
-                decoration: BoxDecoration(
-                    image: DecorationImage(
-                        image: AssetImage('assets/images/bg_squares.png'),
-                        fit: BoxFit.fitWidth,
-                        alignment: Alignment.center)),
-                child: Column(
-                  mainAxisSize: MainAxisSize.min,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    MostPopular(),
-                    TopFlutter(),
-                    TopDart(),
-                    Container(height: 92),
-                  ],
+          child: Listener(
+            onPointerDown: (event) {
+              // Clear Header search TextField focus.
+              FocusScope.of(context).requestFocus(FocusNode());
+            },
+            child: Column(
+              children: <Widget>[
+                MenuBar(),
+                Header(),
+                FlutterFavorites(),
+                // Background squares image container.
+                Container(
+                  constraints: BoxConstraints(maxWidth: 1440, minWidth: 1440),
+                  decoration: BoxDecoration(
+                      image: DecorationImage(
+                          image: AssetImage('assets/images/bg_squares.png'),
+                          fit: BoxFit.fitWidth,
+                          alignment: Alignment.center)),
+                  child: Column(
+                    mainAxisSize: MainAxisSize.min,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      MostPopular(),
+                      TopFlutter(),
+                      TopDart(),
+                      Container(height: 92),
+                    ],
+                  ),
                 ),
-              ),
-              Footer(),
-            ],
+                Footer(),
+              ],
+            ),
           ),
         ),
         backgroundColor: Colors.white,

@@ -84,9 +84,11 @@ class Header extends StatelessWidget {
     return Container(
       width: double.infinity,
       decoration: BoxDecoration(
-          image: DecorationImage(
-              image: AssetImage('assets/images/bg_header.jpg'),
-              fit: BoxFit.cover)),
+        image: DecorationImage(
+            image: AssetImage('assets/images/bg_header.jpg'),
+            fit: BoxFit.cover),
+        color: backgroundColor,
+      ),
       padding: EdgeInsets.symmetric(vertical: 110),
       child: Column(
         mainAxisSize: MainAxisSize.min,
@@ -126,7 +128,7 @@ class Header extends StatelessWidget {
                     TextSpan(
                         recognizer: TapGestureRecognizer()
                           ..onTap = () {
-                            openUrl("https://dart.dev");
+                            openUrl('https://dart.dev');
                           },
                         text: 'Dart',
                         style: TextStyle(color: linkDarkBackgroundColor)),
@@ -135,7 +137,7 @@ class Header extends StatelessWidget {
                         recognizer: TapGestureRecognizer()
                           ..onTap = () {
                             openUrl(
-                                "https://gallery.codelessly.com/flutterwebsites/flutterwebsite");
+                                'https://gallery.codelessly.com/flutterwebsites/flutterwebsite');
                           },
                         text: 'Flutter',
                         style: TextStyle(color: linkDarkBackgroundColor)),
@@ -174,6 +176,11 @@ class FlutterFavorites extends StatelessWidget {
                       text: 'Packages that demonstrate the ',
                     ),
                     TextSpan(
+                        recognizer: TapGestureRecognizer()
+                          ..onTap = () {
+                            openUrl(
+                                'https://flutter.dev/docs/development/packages-and-plugins/favorites');
+                          },
                         text: 'highest levels of quality',
                         style: TextStyle(color: linkColor)),
                     TextSpan(
@@ -198,7 +205,7 @@ class FlutterFavorites extends StatelessWidget {
                     return PackageCard(package: favoritePackages[index]);
                   },
                 ),
-              if (ResponsiveWrapper.of(context).isSmallerThan("MOBILE_LARGE"))
+              if (ResponsiveWrapper.of(context).isSmallerThan('MOBILE_LARGE'))
                 ...favoritePackages.map((e) => Padding(
                       padding: EdgeInsets.symmetric(vertical: 8),
                       child: PackageCard(package: e),
@@ -278,7 +285,7 @@ class MostPopular extends StatelessWidget {
                       ),
                     ),
                   ),
-                if (ResponsiveWrapper.of(context).isSmallerThan("MOBILE_LARGE"))
+                if (ResponsiveWrapper.of(context).isSmallerThan('MOBILE_LARGE'))
                   ...popularPackages.map((e) => Padding(
                         padding: EdgeInsets.symmetric(vertical: 8),
                         child: PackageCard(package: e),
@@ -355,7 +362,7 @@ class TopFlutter extends StatelessWidget {
                       ),
                     ),
                   ),
-                if (ResponsiveWrapper.of(context).isSmallerThan("MOBILE_LARGE"))
+                if (ResponsiveWrapper.of(context).isSmallerThan('MOBILE_LARGE'))
                   ...topFlutterPackages.map((e) => Padding(
                         padding: EdgeInsets.symmetric(vertical: 8),
                         child: PackageCard(package: e),
@@ -456,7 +463,7 @@ class TopDart extends StatelessWidget {
                       ),
                     ),
                   ),
-                if (ResponsiveWrapper.of(context).isSmallerThan("MOBILE_LARGE"))
+                if (ResponsiveWrapper.of(context).isSmallerThan('MOBILE_LARGE'))
                   ...topDartPackages.map((e) => Padding(
                         padding: EdgeInsets.symmetric(vertical: 8),
                         child: PackageCard(package: e),
@@ -516,7 +523,7 @@ class PackageCard extends StatelessWidget {
               maxLines: 3,
               overflow: TextOverflow.clip),
           Padding(padding: EdgeInsets.only(bottom: 16)),
-          if (ResponsiveWrapper.of(context).isLargerThan("MOBILE_LARGE"))
+          if (ResponsiveWrapper.of(context).isLargerThan('MOBILE_LARGE'))
             Spacer(),
           if (package.publisher.isNotEmpty)
             Row(

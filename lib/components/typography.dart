@@ -15,10 +15,10 @@ const TextStyle linkTitleTextStyle = TextStyle(
     fontSize: 20, color: linkTitleColor, height: 1.6, fontFamily: fontFamily);
 
 const TextStyle bodyTextStyle = TextStyle(
-    fontSize: 14, color: textPrimaryColor, height: 1.5, fontFamily: "Roboto");
+    fontSize: 14, color: textPrimaryColor, height: 1.5, fontFamily: 'Roboto');
 
 const TextStyle footerLinkTextStyle = TextStyle(
     fontSize: 14,
     color: textWhiteDarkBackgroundColor,
     height: 1.6,
-    fontFamily: "Roboto");
+    fontFamily: 'Roboto');

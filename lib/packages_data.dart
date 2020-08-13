@@ -25,19 +25,14 @@ List<PackageModel> favoritePackages = [
 
 List<PackageModel> popularPackages = [
   PackageModel(
-      name: 'cloud_firestore',
-      description:
-          'Flutter plugin for Cloud Firestore, a cloud-hosted, noSQL database with live synchronization and offline support on Android and iOS.',
-      publisher: 'firebase.google.com'),
-  PackageModel(
-      name: 'auto_size_text',
-      description:
-          'Flutter widget that automatically resizes text to fit perfectly within its bounds.',
-      publisher: ''),
-  PackageModel(
       name: 'flushbar',
       description:
           'A flexible widget for user notification. Customize your text, button, duration, animations and much more. For Android devs, it is made to replace Snackbars and Toasts.',
+      publisher: ''),
+  PackageModel(
+      name: 'sounds',
+      description:
+          'Sounds provide a complete api and Widgets for audio playback and recording. Both iOS and Android are supported.',
       publisher: ''),
   PackageModel(
       name: 'shimmer',
@@ -48,6 +43,11 @@ List<PackageModel> popularPackages = [
       name: 'smooth_page_indicator',
       description:
           'Customizable animated page indicator with a set of built-in effects.',
+      publisher: ''),
+  PackageModel(
+      name: 'auto_size_text',
+      description:
+          'Flutter widget that automatically resizes text to fit perfectly within its bounds.',
       publisher: ''),
   PackageModel(
       name: 'confetti',

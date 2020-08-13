@@ -28,15 +28,15 @@ class PackageModel {
   String toJson() => json.encode(toMap());
 
   factory PackageModel.fromMap(Map<String, dynamic> json) => PackageModel(
-        name: json["name"] == null ? null : json["name"],
-        description: json["description"] == null ? null : json["description"],
-        publisher: json["publisher"] == null ? null : json["publisher"],
+        name: json['name'] == null ? null : json['name'],
+        description: json['description'] == null ? null : json['description'],
+        publisher: json['publisher'] == null ? null : json['publisher'],
       );
 
   Map<String, dynamic> toMap() => {
-        "name": name == null ? null : name,
-        "description": description == null ? null : description,
-        "publisher": publisher == null ? null : publisher,
+        'name': name == null ? null : name,
+        'description': description == null ? null : description,
+        'publisher': publisher == null ? null : publisher,
       };
 
   @override
