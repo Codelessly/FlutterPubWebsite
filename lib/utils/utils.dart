@@ -18,3 +18,7 @@ String buildPackageUrlFromName(String name) {
 String buildPublisherUrlFromName(String name) {
   return 'https://pub.dev/publishers/$name/packages';
 }
+
+String buildSearchUrlFromQuery(String query) {
+  return 'https://pub.dev/packages?q=$query';
+}

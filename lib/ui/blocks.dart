@@ -104,6 +104,7 @@ class Header extends StatelessWidget {
             ),
             margin: EdgeInsets.symmetric(horizontal: 48, vertical: 20),
             child: TextField(
+              onSubmitted: (value) => openUrl(buildSearchUrlFromQuery(value)),
               style: TextStyle(color: Colors.white, fontSize: 24),
               decoration: InputDecoration(
                   border: InputBorder.none,
@@ -214,11 +215,14 @@ class FlutterFavorites extends StatelessWidget {
                 alignment: Alignment.centerRight,
                 child: Padding(
                   padding: EdgeInsets.only(right: 16),
-                  child: Text('VIEW ALL',
-                      style: TextStyle(
-                          color: linkColor,
-                          fontSize: 16,
-                          fontWeight: FontWeight.bold)),
+                  child: GestureDetector(
+                    onTap: () => openUrl('https://pub.dev/flutter/favorites'),
+                    child: Text('VIEW ALL',
+                        style: TextStyle(
+                            color: linkColor,
+                            fontSize: 16,
+                            fontWeight: FontWeight.bold)),
+                  ),
                 ),
               ),
             ],
