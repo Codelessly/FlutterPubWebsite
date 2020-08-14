@@ -200,6 +200,7 @@ class FlutterFavorites extends StatelessWidget {
                   maxRowCount: 1,
                   itemCount: favoritePackages.length,
                   shrinkWrap: true,
+                  physics: NeverScrollableScrollPhysics(),
                   padding: EdgeInsets.fromLTRB(4, 8, 0, 8),
                   alignment: Alignment.center,
                   itemBuilder: (context, index) {
@@ -281,6 +282,7 @@ class MostPopular extends StatelessWidget {
                         maxRowCount: 2,
                         itemCount: popularPackages.length,
                         shrinkWrap: true,
+                        physics: NeverScrollableScrollPhysics(),
                         padding: EdgeInsets.fromLTRB(4, 8, 0, 16),
                         alignment: Alignment.center,
                         itemBuilder: (context, index) {
@@ -357,6 +359,7 @@ class TopFlutter extends StatelessWidget {
                         maxRowCount: 2,
                         itemCount: topFlutterPackages.length,
                         shrinkWrap: true,
+                        physics: NeverScrollableScrollPhysics(),
                         padding: EdgeInsets.fromLTRB(4, 8, 0, 16),
                         alignment: Alignment.center,
                         itemBuilder: (context, index) {
@@ -459,6 +462,7 @@ class TopDart extends StatelessWidget {
                         maxRowCount: 2,
                         itemCount: topDartPackages.length,
                         shrinkWrap: true,
+                        physics: NeverScrollableScrollPhysics(),
                         padding: EdgeInsets.fromLTRB(4, 8, 0, 16),
                         alignment: Alignment.center,
                         itemBuilder: (context, index) {
