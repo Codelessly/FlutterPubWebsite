@@ -2,9 +2,9 @@ import 'dart:convert';
 
 class PackageModel {
   PackageModel({
-    this.name,
-    this.description,
-    this.publisher,
+    required this.name,
+    required this.description,
+    required this.publisher,
   });
 
   final String name;
@@ -12,9 +12,9 @@ class PackageModel {
   final String publisher;
 
   PackageModel copyWith({
-    String title,
-    String description,
-    String publisher,
+    String? title,
+    String? description,
+    String? publisher,
   }) =>
       PackageModel(
         name: title ?? this.name,

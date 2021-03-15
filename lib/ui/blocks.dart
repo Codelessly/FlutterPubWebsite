@@ -257,7 +257,7 @@ class MostPopular extends StatelessWidget {
             ),
           ),
           ResponsiveRowColumnItem(
-            rowFlex: ResponsiveValue<int>(context,
+            rowFlex: ResponsiveValue<int? >(context,
                     defaultValue: null,
                     valueWhen: [Condition.smallerThan(name: DESKTOP, value: 1)])
                 .value,
@@ -337,7 +337,7 @@ class TopFlutter extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           ResponsiveRowColumnItem(
-            rowFlex: ResponsiveValue<int>(context,
+            rowFlex: ResponsiveValue<int?>(context,
                     defaultValue: null,
                     valueWhen: [Condition.smallerThan(name: DESKTOP, value: 1)])
                 .value,
@@ -444,7 +444,7 @@ class TopDart extends StatelessWidget {
             ),
           ),
           ResponsiveRowColumnItem(
-            rowFlex: ResponsiveValue<int>(context,
+            rowFlex: ResponsiveValue<int?>(context,
                     defaultValue: null,
                     valueWhen: [Condition.smallerThan(name: DESKTOP, value: 1)])
                 .value,
@@ -516,7 +516,7 @@ class TopDart extends StatelessWidget {
 class PackageCard extends StatelessWidget {
   final PackageModel package;
 
-  const PackageCard({Key key, @required this.package}) : super(key: key);
+  const PackageCard({Key? key, required this.package}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

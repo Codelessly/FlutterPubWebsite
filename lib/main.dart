@@ -12,7 +12,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Dart packages',
       builder: (context, widget) => ResponsiveWrapper.builder(
-        ClampingScrollWrapper.builder(context, widget),
+        ClampingScrollWrapper.builder(context, widget!),
         defaultScale: true,
         minWidth: 360,
         defaultName: MOBILE,
