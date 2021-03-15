@@ -8,7 +8,9 @@
 
 [View Pub.dev Website](https://gallery.codelessly.com/flutterwebsites/pub)
 
-[Skia Version](https://gallery.codelessly.com/flutterwebsites/pub/skia)
+[CanvasKit Renderer Version](https://gallery.codelessly.com/flutterwebsites/pub/skia)
+
+[HTML Renderer Version](https://gallery.codelessly.com/flutterwebsites/pub/html)
 
 ## Screenshots
 
