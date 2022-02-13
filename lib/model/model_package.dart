@@ -17,7 +17,7 @@ class PackageModel {
     String? publisher,
   }) =>
       PackageModel(
-        name: title ?? this.name,
+        name: title ?? name,
         description: description ?? this.description,
         publisher: publisher ?? this.publisher,
       );
@@ -28,15 +28,15 @@ class PackageModel {
   String toJson() => json.encode(toMap());
 
   factory PackageModel.fromMap(Map<String, dynamic> json) => PackageModel(
-        name: json['name'] == null ? null : json['name'],
-        description: json['description'] == null ? null : json['description'],
-        publisher: json['publisher'] == null ? null : json['publisher'],
+        name: json['name'],
+        description: json['description'],
+        publisher: json['publisher'],
       );
 
   Map<String, dynamic> toMap() => {
-        'name': name == null ? null : name,
-        'description': description == null ? null : description,
-        'publisher': publisher == null ? null : publisher,
+        'name': name,
+        'description': description,
+        'publisher': publisher,
       };
 
   @override

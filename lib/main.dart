@@ -3,10 +3,12 @@ import 'package:pub_dev/ui/blocks.dart';
 import 'package:responsive_framework/responsive_framework.dart';
 
 void main() {
-  runApp(MyApp());
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
+  const MyApp({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -17,11 +19,11 @@ class MyApp extends StatelessWidget {
         minWidth: 360,
         defaultName: MOBILE,
         breakpoints: [
-          ResponsiveBreakpoint.resize(360),
-          ResponsiveBreakpoint.resize(480, name: MOBILE),
-          ResponsiveBreakpoint.resize(640, name: 'MOBILE_LARGE'),
-          ResponsiveBreakpoint.resize(850, name: TABLET),
-          ResponsiveBreakpoint.resize(1080, name: DESKTOP),
+          const ResponsiveBreakpoint.resize(360),
+          const ResponsiveBreakpoint.resize(480, name: MOBILE),
+          const ResponsiveBreakpoint.resize(640, name: 'MOBILE_LARGE'),
+          const ResponsiveBreakpoint.resize(850, name: TABLET),
+          const ResponsiveBreakpoint.resize(1080, name: DESKTOP),
         ],
       ),
       home: Scaffold(
@@ -34,13 +36,14 @@ class MyApp extends StatelessWidget {
             },
             child: Column(
               children: <Widget>[
-                MenuBar(),
-                Header(),
-                FlutterFavorites(),
+                const MenuBar(),
+                const Header(),
+                const FlutterFavorites(),
                 // Background squares image container.
                 Container(
-                  constraints: BoxConstraints(maxWidth: 1440, minWidth: 1440),
-                  decoration: BoxDecoration(
+                  constraints:
+                      const BoxConstraints(maxWidth: 1440, minWidth: 1440),
+                  decoration: const BoxDecoration(
                       image: DecorationImage(
                           image: AssetImage('assets/images/bg_squares.png'),
                           fit: BoxFit.fitWidth,
@@ -49,14 +52,14 @@ class MyApp extends StatelessWidget {
                     mainAxisSize: MainAxisSize.min,
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
-                      MostPopular(),
-                      TopFlutter(),
-                      TopDart(),
+                      const MostPopular(),
+                      const TopFlutter(),
+                      const TopDart(),
                       Container(height: 92),
                     ],
                   ),
                 ),
-                Footer(),
+                const Footer(),
               ],
             ),
           ),

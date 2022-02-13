@@ -1,6 +1,5 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
 import 'package:pub_dev/components/components.dart';
 import 'package:pub_dev/model/model_package.dart';
 import 'package:pub_dev/packages_data.dart';
@@ -8,44 +7,48 @@ import 'package:pub_dev/utils/utils.dart';
 import 'package:responsive_framework/responsive_framework.dart';
 
 class MenuBar extends StatelessWidget {
+  const MenuBar({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return Container(
       height: 50,
       color: backgroundColor,
       padding: ResponsiveValue<EdgeInsets>(context,
-          defaultValue: EdgeInsets.symmetric(
+          defaultValue: const EdgeInsets.symmetric(
             horizontal: 35,
           ),
           valueWhen: [
-            Condition.smallerThan(
+            const Condition.smallerThan(
                 name: TABLET, value: EdgeInsets.symmetric(horizontal: 0))
           ]).value,
       child: Row(
         children: [
           ResponsiveVisibility(
             visible: true,
-            hiddenWhen: [Condition.smallerThan(name: TABLET)],
+            hiddenWhen: const [Condition.smallerThan(name: TABLET)],
             child: Expanded(
               child: Container(),
             ),
           ),
           ResponsiveVisibility(
             visible: false,
-            visibleWhen: [Condition.smallerThan(name: TABLET)],
+            visibleWhen: const [Condition.smallerThan(name: TABLET)],
             child: IconButton(
               onPressed: () {},
-              icon: Icon(Icons.menu,
+              icon: const Icon(Icons.menu,
                   color: textWhiteDarkBackgroundColor, size: 24),
             ),
           ),
           ResponsiveVisibility(
             visible: true,
-            hiddenWhen: [Condition.smallerThan(name: TABLET)],
-            child: FlatButton(
+            hiddenWhen: const [Condition.smallerThan(name: TABLET)],
+            child: TextButton(
               onPressed: () {},
-              padding: EdgeInsets.fromLTRB(0, 8, 0, 8),
-              child: Text(
+              style: TextButton.styleFrom(
+                  padding: const EdgeInsets.fromLTRB(0, 8, 0, 8),
+                  primary: materialSplashRippleLightColor),
+              child: const Text(
                 'Sign in',
                 style: TextStyle(
                     fontSize: 14, color: textWhiteDarkBackgroundColor),
@@ -54,13 +57,15 @@ class MenuBar extends StatelessWidget {
           ),
           ResponsiveVisibility(
             visible: true,
-            hiddenWhen: [Condition.smallerThan(name: TABLET)],
-            child: FlatButton(
+            hiddenWhen: const [Condition.smallerThan(name: TABLET)],
+            child: TextButton(
               onPressed: () {},
-              padding: EdgeInsets.fromLTRB(0, 8, 0, 8),
+              style: TextButton.styleFrom(
+                  padding: const EdgeInsets.fromLTRB(0, 8, 0, 8),
+                  primary: materialSplashRippleLightColor),
               child: Row(
                 mainAxisSize: MainAxisSize.min,
-                children: [
+                children: const [
                   Text(
                     'Help',
                     style: TextStyle(
@@ -79,34 +84,36 @@ class MenuBar extends StatelessWidget {
 }
 
 class Header extends StatelessWidget {
+  const Header({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return Container(
       width: double.infinity,
-      decoration: BoxDecoration(
+      decoration: const BoxDecoration(
         image: DecorationImage(
             image: AssetImage('assets/images/bg_header.jpg'),
             fit: BoxFit.cover),
         color: backgroundColor,
       ),
-      padding: EdgeInsets.symmetric(vertical: 110),
+      padding: const EdgeInsets.symmetric(vertical: 110),
       child: Column(
         mainAxisSize: MainAxisSize.min,
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Image.asset('assets/images/pub_dev_logo.png', height: 70),
-          Padding(padding: EdgeInsets.only(bottom: 28)),
+          const Padding(padding: EdgeInsets.only(bottom: 28)),
           Container(
-            constraints: BoxConstraints(maxWidth: 880),
+            constraints: const BoxConstraints(maxWidth: 880),
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(45),
-              color: Color(0xFF34404D),
+              color: const Color(0xFF34404D),
             ),
-            margin: EdgeInsets.symmetric(horizontal: 48, vertical: 20),
+            margin: const EdgeInsets.symmetric(horizontal: 48, vertical: 20),
             child: TextField(
               onSubmitted: (value) => openUrl(buildSearchUrlFromQuery(value)),
-              style: TextStyle(color: Colors.white, fontSize: 24),
-              decoration: InputDecoration(
+              style: const TextStyle(color: Colors.white, fontSize: 24),
+              decoration: const InputDecoration(
                   border: InputBorder.none,
                   hintStyle: TextStyle(color: Color(0xFF888888)),
                   icon: Padding(
@@ -120,20 +127,20 @@ class Header extends StatelessWidget {
             ),
           ),
           Padding(
-            padding: EdgeInsets.symmetric(horizontal: 24, vertical: 18),
+            padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 18),
             child: RichText(
               text: TextSpan(
-                  style: TextStyle(fontSize: 18, color: Colors.white),
+                  style: const TextStyle(fontSize: 18, color: Colors.white),
                   children: [
-                    TextSpan(text: 'Find and use packages to build '),
+                    const TextSpan(text: 'Find and use packages to build '),
                     TextSpan(
                         recognizer: TapGestureRecognizer()
                           ..onTap = () {
                             openUrl('https://dart.dev');
                           },
                         text: 'Dart',
-                        style: TextStyle(color: linkDarkBackgroundColor)),
-                    TextSpan(text: ' and '),
+                        style: const TextStyle(color: linkDarkBackgroundColor)),
+                    const TextSpan(text: ' and '),
                     TextSpan(
                         recognizer: TapGestureRecognizer()
                           ..onTap = () {
@@ -141,8 +148,8 @@ class Header extends StatelessWidget {
                                 'https://gallery.codelessly.com/flutterwebsites/flutterwebsite');
                           },
                         text: 'Flutter',
-                        style: TextStyle(color: linkDarkBackgroundColor)),
-                    TextSpan(text: ' apps.'),
+                        style: const TextStyle(color: linkDarkBackgroundColor)),
+                    const TextSpan(text: ' apps.'),
                   ]),
             ),
           )
@@ -153,27 +160,29 @@ class Header extends StatelessWidget {
 }
 
 class FlutterFavorites extends StatelessWidget {
+  const FlutterFavorites({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return Container(
       width: double.infinity,
-      color: Color(0xFFF5F5F7),
+      color: const Color(0xFFF5F5F7),
       child: Center(
         child: Container(
-          constraints: BoxConstraints(maxWidth: 1110),
-          padding: EdgeInsets.fromLTRB(0, 44, 0, 32),
-          margin: EdgeInsets.symmetric(horizontal: 24),
+          constraints: const BoxConstraints(maxWidth: 1110),
+          padding: const EdgeInsets.fromLTRB(0, 44, 0, 32),
+          margin: const EdgeInsets.symmetric(horizontal: 24),
           child: Column(
             mainAxisSize: MainAxisSize.min,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text('Flutter Favorites', style: titleTextStyle),
+              const Text('Flutter Favorites', style: titleTextStyle),
               RichText(
                 text: TextSpan(
-                  style: TextStyle(
+                  style: const TextStyle(
                       color: textPrimaryColor, fontSize: 18, height: 1.6),
                   children: [
-                    TextSpan(
+                    const TextSpan(
                       text: 'Packages that demonstrate the ',
                     ),
                     TextSpan(
@@ -183,16 +192,16 @@ class FlutterFavorites extends StatelessWidget {
                                 'https://flutter.dev/docs/development/packages-and-plugins/favorites');
                           },
                         text: 'highest levels of quality',
-                        style: TextStyle(color: linkColor)),
-                    TextSpan(
+                        style: const TextStyle(color: linkColor)),
+                    const TextSpan(
                         text: ', selected by the Flutter Ecosystem Committee'),
                   ],
                 ),
               ),
-              Padding(padding: EdgeInsets.only(bottom: 10)),
+              const Padding(padding: EdgeInsets.only(bottom: 10)),
               if (ResponsiveWrapper.of(context).isLargerThan(MOBILE))
                 ResponsiveGridView.builder(
-                  gridDelegate: ResponsiveGridDelegate(
+                  gridDelegate: const ResponsiveGridDelegate(
                       crossAxisExtent: 260,
                       mainAxisSpacing: 16,
                       crossAxisSpacing: 16,
@@ -200,8 +209,8 @@ class FlutterFavorites extends StatelessWidget {
                   maxRowCount: 1,
                   itemCount: favoritePackages.length,
                   shrinkWrap: true,
-                  physics: NeverScrollableScrollPhysics(),
-                  padding: EdgeInsets.fromLTRB(4, 8, 0, 8),
+                  physics: const NeverScrollableScrollPhysics(),
+                  padding: const EdgeInsets.fromLTRB(4, 8, 0, 8),
                   alignment: Alignment.center,
                   itemBuilder: (context, index) {
                     return PackageCard(package: favoritePackages[index]);
@@ -209,18 +218,18 @@ class FlutterFavorites extends StatelessWidget {
                 ),
               if (ResponsiveWrapper.of(context).isSmallerThan('MOBILE_LARGE'))
                 ...favoritePackages.map((e) => Padding(
-                      padding: EdgeInsets.symmetric(vertical: 8),
+                      padding: const EdgeInsets.symmetric(vertical: 8),
                       child: PackageCard(package: e),
                     )),
               Align(
                 alignment: Alignment.centerRight,
                 child: Padding(
-                  padding: EdgeInsets.only(right: 16),
+                  padding: const EdgeInsets.only(right: 16),
                   child: MouseRegion(
                     cursor: SystemMouseCursors.click,
                     child: GestureDetector(
                       onTap: () => openUrl('https://pub.dev/flutter/favorites'),
-                      child: Text('VIEW ALL',
+                      child: const Text('VIEW ALL',
                           style: TextStyle(
                               color: linkColor,
                               fontSize: 16,
@@ -238,46 +247,49 @@ class FlutterFavorites extends StatelessWidget {
 }
 
 class MostPopular extends StatelessWidget {
+  const MostPopular({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.symmetric(vertical: 20, horizontal: 20),
+      padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 20),
       child: Row(
         mainAxisSize: MainAxisSize.min,
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           ResponsiveVisibility(
-            hiddenWhen: [Condition.smallerThan(name: DESKTOP)],
+            hiddenWhen: const [Condition.smallerThan(name: DESKTOP)],
             child: Flexible(
               child: ConstrainedBox(
-                constraints: BoxConstraints(maxHeight: 280),
+                constraints: const BoxConstraints(maxHeight: 280),
                 child: Image.asset('assets/images/image_packages_1.png',
                     fit: BoxFit.contain),
               ),
             ),
           ),
           ResponsiveRowColumnItem(
-            rowFlex: ResponsiveValue<int? >(context,
-                    defaultValue: null,
-                    valueWhen: [Condition.smallerThan(name: DESKTOP, value: 1)])
-                .value,
+            rowFlex: ResponsiveValue<int?>(context,
+                defaultValue: null,
+                valueWhen: [
+                  const Condition.smallerThan(name: DESKTOP, value: 1)
+                ]).value,
             child: Column(
               mainAxisSize: MainAxisSize.min,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Padding(padding: EdgeInsets.only(bottom: 24)),
-                Text('Most popular packages', style: titleTextStyle),
-                Text('The most downloaded packages over the past 60 days',
+                const Padding(padding: EdgeInsets.only(bottom: 24)),
+                const Text('Most popular packages', style: titleTextStyle),
+                const Text('The most downloaded packages over the past 60 days',
                     style: TextStyle(
                         color: textPrimaryColor, fontSize: 18, height: 1.6)),
-                Padding(padding: EdgeInsets.only(bottom: 10)),
+                const Padding(padding: EdgeInsets.only(bottom: 10)),
                 if (ResponsiveWrapper.of(context).isLargerThan(MOBILE))
                   Align(
                     alignment: Alignment.center,
                     child: Container(
-                      constraints: BoxConstraints(maxWidth: 834),
+                      constraints: const BoxConstraints(maxWidth: 834),
                       child: ResponsiveGridView.builder(
-                        gridDelegate: ResponsiveGridDelegate(
+                        gridDelegate: const ResponsiveGridDelegate(
                             crossAxisExtent: 260,
                             mainAxisSpacing: 16,
                             crossAxisSpacing: 16,
@@ -285,8 +297,8 @@ class MostPopular extends StatelessWidget {
                         maxRowCount: 2,
                         itemCount: popularPackages.length,
                         shrinkWrap: true,
-                        physics: NeverScrollableScrollPhysics(),
-                        padding: EdgeInsets.fromLTRB(4, 8, 0, 16),
+                        physics: const NeverScrollableScrollPhysics(),
+                        padding: const EdgeInsets.fromLTRB(4, 8, 0, 16),
                         alignment: Alignment.center,
                         itemBuilder: (context, index) {
                           return PackageCard(package: popularPackages[index]);
@@ -296,20 +308,20 @@ class MostPopular extends StatelessWidget {
                   ),
                 if (ResponsiveWrapper.of(context).isSmallerThan('MOBILE_LARGE'))
                   ...popularPackages.map((e) => Padding(
-                        padding: EdgeInsets.symmetric(vertical: 8),
+                        padding: const EdgeInsets.symmetric(vertical: 8),
                         child: PackageCard(package: e),
                       )),
                 // TODO: Alignment isn't working due to Flutter issue.
                 Align(
                   alignment: Alignment.centerRight,
                   child: Padding(
-                    padding: EdgeInsets.only(right: 16),
+                    padding: const EdgeInsets.only(right: 16),
                     child: MouseRegion(
                       cursor: SystemMouseCursors.click,
                       child: GestureDetector(
                         onTap: () =>
                             openUrl('https://pub.dev/packages?sort=popularity'),
-                        child: Text('VIEW ALL',
+                        child: const Text('VIEW ALL',
                             style: TextStyle(
                                 color: linkColor,
                                 fontSize: 16,
@@ -328,36 +340,39 @@ class MostPopular extends StatelessWidget {
 }
 
 class TopFlutter extends StatelessWidget {
+  const TopFlutter({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.symmetric(vertical: 20, horizontal: 20),
+      padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 20),
       child: Row(
         mainAxisSize: MainAxisSize.min,
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           ResponsiveRowColumnItem(
             rowFlex: ResponsiveValue<int?>(context,
-                    defaultValue: null,
-                    valueWhen: [Condition.smallerThan(name: DESKTOP, value: 1)])
-                .value,
+                defaultValue: null,
+                valueWhen: [
+                  const Condition.smallerThan(name: DESKTOP, value: 1)
+                ]).value,
             child: Column(
               mainAxisSize: MainAxisSize.min,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Padding(padding: EdgeInsets.only(bottom: 24)),
-                Text('Top Flutter packages', style: titleTextStyle),
-                Text('Top packages that extend Flutter with new features',
+                const Padding(padding: EdgeInsets.only(bottom: 24)),
+                const Text('Top Flutter packages', style: titleTextStyle),
+                const Text('Top packages that extend Flutter with new features',
                     style: TextStyle(
                         color: textPrimaryColor, fontSize: 18, height: 1.6)),
-                Padding(padding: EdgeInsets.only(bottom: 10)),
+                const Padding(padding: EdgeInsets.only(bottom: 10)),
                 if (ResponsiveWrapper.of(context).isLargerThan(MOBILE))
                   Align(
                     alignment: Alignment.center,
                     child: Container(
-                      constraints: BoxConstraints(maxWidth: 834),
+                      constraints: const BoxConstraints(maxWidth: 834),
                       child: ResponsiveGridView.builder(
-                        gridDelegate: ResponsiveGridDelegate(
+                        gridDelegate: const ResponsiveGridDelegate(
                             crossAxisExtent: 260,
                             mainAxisSpacing: 16,
                             crossAxisSpacing: 16,
@@ -365,8 +380,8 @@ class TopFlutter extends StatelessWidget {
                         maxRowCount: 2,
                         itemCount: topFlutterPackages.length,
                         shrinkWrap: true,
-                        physics: NeverScrollableScrollPhysics(),
-                        padding: EdgeInsets.fromLTRB(4, 8, 0, 16),
+                        physics: const NeverScrollableScrollPhysics(),
+                        padding: const EdgeInsets.fromLTRB(4, 8, 0, 16),
                         alignment: Alignment.center,
                         itemBuilder: (context, index) {
                           return PackageCard(
@@ -377,20 +392,20 @@ class TopFlutter extends StatelessWidget {
                   ),
                 if (ResponsiveWrapper.of(context).isSmallerThan('MOBILE_LARGE'))
                   ...topFlutterPackages.map((e) => Padding(
-                        padding: EdgeInsets.symmetric(vertical: 8),
+                        padding: const EdgeInsets.symmetric(vertical: 8),
                         child: PackageCard(package: e),
                       )),
                 // TODO: Alignment isn't working due to Flutter issue.
                 Align(
                   alignment: Alignment.centerRight,
                   child: Padding(
-                    padding: EdgeInsets.only(right: 16),
+                    padding: const EdgeInsets.only(right: 16),
                     child: MouseRegion(
                       cursor: SystemMouseCursors.click,
                       child: GestureDetector(
                         onTap: () =>
                             openUrl('https://pub.dev/flutter/packages'),
-                        child: Text('VIEW ALL',
+                        child: const Text('VIEW ALL',
                             style: TextStyle(
                                 color: linkColor,
                                 fontSize: 16,
@@ -403,12 +418,12 @@ class TopFlutter extends StatelessWidget {
             ),
           ),
           ResponsiveVisibility(
-            hiddenWhen: [Condition.smallerThan(name: DESKTOP)],
+            hiddenWhen: const [Condition.smallerThan(name: DESKTOP)],
             child: Flexible(
               child: Container(
-                margin: EdgeInsets.only(top: 60),
+                margin: const EdgeInsets.only(top: 60),
                 child: ConstrainedBox(
-                  constraints: BoxConstraints(maxHeight: 280),
+                  constraints: const BoxConstraints(maxHeight: 280),
                   child: Image.asset('assets/images/image_packages_2.png',
                       fit: BoxFit.contain),
                 ),
@@ -422,21 +437,23 @@ class TopFlutter extends StatelessWidget {
 }
 
 class TopDart extends StatelessWidget {
+  const TopDart({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.symmetric(vertical: 20, horizontal: 20),
+      padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 20),
       child: Row(
         mainAxisSize: MainAxisSize.min,
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           ResponsiveVisibility(
-            hiddenWhen: [Condition.smallerThan(name: DESKTOP)],
+            hiddenWhen: const [Condition.smallerThan(name: DESKTOP)],
             child: Flexible(
               child: Container(
-                margin: EdgeInsets.only(top: 60),
+                margin: const EdgeInsets.only(top: 60),
                 child: ConstrainedBox(
-                  constraints: BoxConstraints(maxHeight: 280),
+                  constraints: const BoxConstraints(maxHeight: 280),
                   child: Image.asset('assets/images/image_packages_3.png',
                       fit: BoxFit.contain),
                 ),
@@ -445,26 +462,27 @@ class TopDart extends StatelessWidget {
           ),
           ResponsiveRowColumnItem(
             rowFlex: ResponsiveValue<int?>(context,
-                    defaultValue: null,
-                    valueWhen: [Condition.smallerThan(name: DESKTOP, value: 1)])
-                .value,
+                defaultValue: null,
+                valueWhen: [
+                  const Condition.smallerThan(name: DESKTOP, value: 1)
+                ]).value,
             child: Column(
               mainAxisSize: MainAxisSize.min,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Padding(padding: EdgeInsets.only(bottom: 24)),
-                Text('Top Dart packages', style: titleTextStyle),
-                Text('Top packages for any Dart-based app or program',
+                const Padding(padding: EdgeInsets.only(bottom: 24)),
+                const Text('Top Dart packages', style: titleTextStyle),
+                const Text('Top packages for any Dart-based app or program',
                     style: TextStyle(
                         color: textPrimaryColor, fontSize: 18, height: 1.6)),
-                Padding(padding: EdgeInsets.only(bottom: 10)),
+                const Padding(padding: EdgeInsets.only(bottom: 10)),
                 if (ResponsiveWrapper.of(context).isLargerThan(MOBILE))
                   Align(
                     alignment: Alignment.center,
                     child: Container(
-                      constraints: BoxConstraints(maxWidth: 834),
+                      constraints: const BoxConstraints(maxWidth: 834),
                       child: ResponsiveGridView.builder(
-                        gridDelegate: ResponsiveGridDelegate(
+                        gridDelegate: const ResponsiveGridDelegate(
                             crossAxisExtent: 260,
                             mainAxisSpacing: 16,
                             crossAxisSpacing: 16,
@@ -472,8 +490,8 @@ class TopDart extends StatelessWidget {
                         maxRowCount: 2,
                         itemCount: topDartPackages.length,
                         shrinkWrap: true,
-                        physics: NeverScrollableScrollPhysics(),
-                        padding: EdgeInsets.fromLTRB(4, 8, 0, 16),
+                        physics: const NeverScrollableScrollPhysics(),
+                        padding: const EdgeInsets.fromLTRB(4, 8, 0, 16),
                         alignment: Alignment.center,
                         itemBuilder: (context, index) {
                           return PackageCard(package: topDartPackages[index]);
@@ -483,19 +501,19 @@ class TopDart extends StatelessWidget {
                   ),
                 if (ResponsiveWrapper.of(context).isSmallerThan('MOBILE_LARGE'))
                   ...topDartPackages.map((e) => Padding(
-                        padding: EdgeInsets.symmetric(vertical: 8),
+                        padding: const EdgeInsets.symmetric(vertical: 8),
                         child: PackageCard(package: e),
                       )),
                 // TODO: Alignment isn't working due to Flutter issue.
                 Align(
                   alignment: Alignment.centerRight,
                   child: Padding(
-                    padding: EdgeInsets.only(right: 16),
+                    padding: const EdgeInsets.only(right: 16),
                     child: MouseRegion(
                       cursor: SystemMouseCursors.click,
                       child: GestureDetector(
                         onTap: () => openUrl('https://pub.dev/dart/packages'),
-                        child: Text('VIEW ALL',
+                        child: const Text('VIEW ALL',
                             style: TextStyle(
                                 color: linkColor,
                                 fontSize: 16,
@@ -521,9 +539,9 @@ class PackageCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.fromLTRB(30, 24, 30, 24),
+      padding: const EdgeInsets.fromLTRB(30, 24, 30, 24),
       decoration: BoxDecoration(
-        boxShadow: [
+        boxShadow: const [
           BoxShadow(
               color: Color(0x4D000000), offset: Offset(0, 2), blurRadius: 5),
         ],
@@ -543,32 +561,32 @@ class PackageCard extends StatelessWidget {
                     overflow: TextOverflow.ellipsis)),
           ),
           Text(package.description,
-              style:
-                  TextStyle(color: textPrimaryColor, fontSize: 14, height: 1.6),
+              style: const TextStyle(
+                  color: textPrimaryColor, fontSize: 14, height: 1.6),
               maxLines: 3,
               overflow: TextOverflow.clip),
-          Padding(padding: EdgeInsets.only(bottom: 16)),
+          const Padding(padding: EdgeInsets.only(bottom: 16)),
           if (ResponsiveWrapper.of(context).isLargerThan('MOBILE_LARGE'))
-            Spacer(),
+            const Spacer(),
           if (package.publisher.isNotEmpty)
             Row(
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 Image.asset('assets/images/icon_verified_publisher.png',
                     width: 14, height: 16),
-                Padding(padding: EdgeInsets.only(right: 4)),
+                const Padding(padding: EdgeInsets.only(right: 4)),
                 MouseRegion(
                   cursor: SystemMouseCursors.click,
                   child: GestureDetector(
                     onTap: () =>
                         openUrl(buildPublisherUrlFromName(package.publisher)),
                     child: Text(package.publisher,
-                        style: TextStyle(color: linkColor, fontSize: 12)),
+                        style: const TextStyle(color: linkColor, fontSize: 12)),
                   ),
                 ),
               ],
             ),
-          Padding(padding: EdgeInsets.only(bottom: 8)),
+          const Padding(padding: EdgeInsets.only(bottom: 8)),
         ],
       ),
     );
@@ -576,21 +594,24 @@ class PackageCard extends StatelessWidget {
 }
 
 class Footer extends StatelessWidget {
-  EdgeInsetsGeometry linkTextPadding =
+  final EdgeInsetsGeometry linkTextPadding =
       const EdgeInsets.symmetric(horizontal: 8);
-  Widget divider = const SizedBox(
+  final Widget divider = const SizedBox(
     height: 18,
-    child: const VerticalDivider(
+    child: VerticalDivider(
       color: textWhiteDarkBackgroundColor,
       thickness: 1,
     ),
   );
+
+  const Footer({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return Container(
       width: double.infinity,
       color: backgroundColor,
-      padding: EdgeInsets.fromLTRB(16, 29, 16, 25),
+      padding: const EdgeInsets.fromLTRB(16, 29, 16, 25),
       child: Wrap(
         alignment: WrapAlignment.center,
         runSpacing: 4,
@@ -601,7 +622,7 @@ class Footer extends StatelessWidget {
               onTap: () => openUrl('https://dart.dev/'),
               child: Padding(
                 padding: linkTextPadding,
-                child: Text(
+                child: const Text(
                   'Dart language',
                   style: footerLinkTextStyle,
                 ),
@@ -615,7 +636,7 @@ class Footer extends StatelessWidget {
               onTap: () => openUrl('https://pub.dev/policy'),
               child: Padding(
                 padding: linkTextPadding,
-                child: Text(
+                child: const Text(
                   'Policy',
                   style: footerLinkTextStyle,
                 ),
@@ -630,7 +651,7 @@ class Footer extends StatelessWidget {
                   openUrl('https://www.google.com/intl/en/policies/terms/'),
               child: Padding(
                 padding: linkTextPadding,
-                child: Text(
+                child: const Text(
                   'Terms',
                   style: footerLinkTextStyle,
                 ),
@@ -644,7 +665,7 @@ class Footer extends StatelessWidget {
               onTap: () => openUrl('https://pub.dev/security'),
               child: Padding(
                 padding: linkTextPadding,
-                child: Text(
+                child: const Text(
                   'Security',
                   style: footerLinkTextStyle,
                 ),
@@ -659,7 +680,7 @@ class Footer extends StatelessWidget {
                   openUrl('https://www.google.com/intl/en/policies/privacy/'),
               child: Padding(
                 padding: linkTextPadding,
-                child: Text(
+                child: const Text(
                   'Privacy',
                   style: footerLinkTextStyle,
                 ),
@@ -673,7 +694,7 @@ class Footer extends StatelessWidget {
               onTap: () => openUrl('https://pub.dev/help'),
               child: Padding(
                 padding: linkTextPadding,
-                child: Text(
+                child: const Text(
                   'Help',
                   style: footerLinkTextStyle,
                 ),
@@ -681,12 +702,12 @@ class Footer extends StatelessWidget {
             ),
           ),
           divider,
-          Padding(padding: EdgeInsets.only(right: 6)),
+          const Padding(padding: EdgeInsets.only(right: 6)),
           MouseRegion(
             cursor: SystemMouseCursors.click,
             child: GestureDetector(
               onTap: () => openUrl('https://pub.dev/feed.atom'),
-              child: Padding(
+              child: const Padding(
                 padding: EdgeInsets.symmetric(horizontal: 6),
                 child: ImageIcon(
                   AssetImage('assets/images/icon_rss_feed.png'),
@@ -701,7 +722,7 @@ class Footer extends StatelessWidget {
             child: GestureDetector(
               onTap: () => openUrl(
                   'https://github.com/dart-lang/pub-dev/issues/new?body=URL%3A+https%3A%2F%2Fpub.dev%2F%0A%0A%3CDescribe+your+issue+or+suggestion+here%3E&title=%3CSummarize+your+issues+here%3E&labels=Area%3A+site+feedback'),
-              child: Padding(
+              child: const Padding(
                 padding: EdgeInsets.symmetric(horizontal: 6),
                 child: ImageIcon(
                   AssetImage('assets/images/icon_bug_report.png'),
