@@ -1,4 +1,4 @@
-package pub.dev
+package com.pubdev
 
 import io.flutter.embedding.android.FlutterActivity
 
