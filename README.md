@@ -8,9 +8,9 @@
 
 [View Pub.dev Website](https://gallery.codelessly.com/flutterwebsites/pub)
 
-[CanvasKit Renderer Version](https://gallery.codelessly.com/flutterwebsites/pub/skia)
+[Canvas Renderer Version](https://gallery.codelessly.com/flutterwebsites/pub-canvas)
 
-[HTML Renderer Version](https://gallery.codelessly.com/flutterwebsites/pub/html)
+[HTML Renderer Version](https://gallery.codelessly.com/flutterwebsites/pub-html)
 
 ## Screenshots
 
@@ -137,7 +137,7 @@ The Pub.dev Template is licensed under Zero-Clause BSD and released as Emailware
 
     BSD Zero Clause License
 
-    Copyright © 2020 Codelessly
+    Copyright © 2022 Codelessly
 
     Permission to use, copy, modify, and/or distribute this software for any
     purpose with or without fee is hereby granted.
