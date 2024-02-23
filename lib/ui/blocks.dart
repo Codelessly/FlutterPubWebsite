@@ -6,8 +6,8 @@ import 'package:pub_dev/packages_data.dart';
 import 'package:pub_dev/utils/utils.dart';
 import 'package:responsive_framework/responsive_framework.dart';
 
-class MenuBar extends StatelessWidget {
-  const MenuBar({Key? key}) : super(key: key);
+class MenuHeader extends StatelessWidget {
+  const MenuHeader({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -18,22 +18,26 @@ class MenuBar extends StatelessWidget {
           defaultValue: const EdgeInsets.symmetric(
             horizontal: 35,
           ),
-          valueWhen: [
-            const Condition.smallerThan(
-                name: TABLET, value: EdgeInsets.symmetric(horizontal: 0))
+          conditionalValues: [
+            Condition.smallerThan(
+                name: TABLET, value: const EdgeInsets.symmetric(horizontal: 0))
           ]).value,
       child: Row(
         children: [
           ResponsiveVisibility(
             visible: true,
-            hiddenWhen: const [Condition.smallerThan(name: TABLET)],
+            hiddenConditions: [
+              Condition.smallerThan(name: TABLET, value: false)
+            ],
             child: Expanded(
               child: Container(),
             ),
           ),
           ResponsiveVisibility(
             visible: false,
-            visibleWhen: const [Condition.smallerThan(name: TABLET)],
+            visibleConditions: [
+              Condition.smallerThan(name: TABLET, value: false)
+            ],
             child: IconButton(
               onPressed: () {},
               icon: const Icon(Icons.menu,
@@ -42,12 +46,14 @@ class MenuBar extends StatelessWidget {
           ),
           ResponsiveVisibility(
             visible: true,
-            hiddenWhen: const [Condition.smallerThan(name: TABLET)],
+            hiddenConditions: [
+              Condition.smallerThan(name: TABLET, value: false)
+            ],
             child: TextButton(
               onPressed: () {},
               style: TextButton.styleFrom(
                   padding: const EdgeInsets.fromLTRB(0, 8, 0, 8),
-                  primary: materialSplashRippleLightColor),
+                  foregroundColor: materialSplashRippleLightColor),
               child: const Text(
                 'Sign in',
                 style: TextStyle(
@@ -57,15 +63,17 @@ class MenuBar extends StatelessWidget {
           ),
           ResponsiveVisibility(
             visible: true,
-            hiddenWhen: const [Condition.smallerThan(name: TABLET)],
+            hiddenConditions: [
+              Condition.smallerThan(name: TABLET, value: false)
+            ],
             child: TextButton(
               onPressed: () {},
               style: TextButton.styleFrom(
                   padding: const EdgeInsets.fromLTRB(0, 8, 0, 8),
-                  primary: materialSplashRippleLightColor),
-              child: Row(
+                  foregroundColor: materialSplashRippleLightColor),
+              child: const Row(
                 mainAxisSize: MainAxisSize.min,
-                children: const [
+                children: [
                   Text(
                     'Help',
                     style: TextStyle(
@@ -199,7 +207,7 @@ class FlutterFavorites extends StatelessWidget {
                 ),
               ),
               const Padding(padding: EdgeInsets.only(bottom: 10)),
-              if (ResponsiveWrapper.of(context).isLargerThan(MOBILE))
+              if (ResponsiveBreakpoints.of(context).largerThan(MOBILE))
                 ResponsiveGridView.builder(
                   gridDelegate: const ResponsiveGridDelegate(
                       crossAxisExtent: 260,
@@ -216,7 +224,7 @@ class FlutterFavorites extends StatelessWidget {
                     return PackageCard(package: favoritePackages[index]);
                   },
                 ),
-              if (ResponsiveWrapper.of(context).isSmallerThan('MOBILE_LARGE'))
+              if (ResponsiveBreakpoints.of(context).smallerThan('MOBILE_LARGE'))
                 ...favoritePackages.map((e) => Padding(
                       padding: const EdgeInsets.symmetric(vertical: 8),
                       child: PackageCard(package: e),
@@ -258,7 +266,9 @@ class MostPopular extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           ResponsiveVisibility(
-            hiddenWhen: const [Condition.smallerThan(name: DESKTOP)],
+            hiddenConditions: [
+              Condition.smallerThan(name: DESKTOP, value: false)
+            ],
             child: Flexible(
               child: ConstrainedBox(
                 constraints: const BoxConstraints(maxHeight: 280),
@@ -270,8 +280,8 @@ class MostPopular extends StatelessWidget {
           ResponsiveRowColumnItem(
             rowFlex: ResponsiveValue<int?>(context,
                 defaultValue: null,
-                valueWhen: [
-                  const Condition.smallerThan(name: DESKTOP, value: 1)
+                conditionalValues: [
+                  Condition.smallerThan(name: DESKTOP, value: 1)
                 ]).value,
             child: Column(
               mainAxisSize: MainAxisSize.min,
@@ -283,7 +293,7 @@ class MostPopular extends StatelessWidget {
                     style: TextStyle(
                         color: textPrimaryColor, fontSize: 18, height: 1.6)),
                 const Padding(padding: EdgeInsets.only(bottom: 10)),
-                if (ResponsiveWrapper.of(context).isLargerThan(MOBILE))
+                if (ResponsiveBreakpoints.of(context).largerThan(MOBILE))
                   Align(
                     alignment: Alignment.center,
                     child: Container(
@@ -306,7 +316,8 @@ class MostPopular extends StatelessWidget {
                       ),
                     ),
                   ),
-                if (ResponsiveWrapper.of(context).isSmallerThan('MOBILE_LARGE'))
+                if (ResponsiveBreakpoints.of(context)
+                    .smallerThan('MOBILE_LARGE'))
                   ...popularPackages.map((e) => Padding(
                         padding: const EdgeInsets.symmetric(vertical: 8),
                         child: PackageCard(package: e),
@@ -353,8 +364,8 @@ class TopFlutter extends StatelessWidget {
           ResponsiveRowColumnItem(
             rowFlex: ResponsiveValue<int?>(context,
                 defaultValue: null,
-                valueWhen: [
-                  const Condition.smallerThan(name: DESKTOP, value: 1)
+                conditionalValues: [
+                  Condition.smallerThan(name: DESKTOP, value: 1)
                 ]).value,
             child: Column(
               mainAxisSize: MainAxisSize.min,
@@ -366,7 +377,7 @@ class TopFlutter extends StatelessWidget {
                     style: TextStyle(
                         color: textPrimaryColor, fontSize: 18, height: 1.6)),
                 const Padding(padding: EdgeInsets.only(bottom: 10)),
-                if (ResponsiveWrapper.of(context).isLargerThan(MOBILE))
+                if (ResponsiveBreakpoints.of(context).largerThan(MOBILE))
                   Align(
                     alignment: Alignment.center,
                     child: Container(
@@ -390,7 +401,8 @@ class TopFlutter extends StatelessWidget {
                       ),
                     ),
                   ),
-                if (ResponsiveWrapper.of(context).isSmallerThan('MOBILE_LARGE'))
+                if (ResponsiveBreakpoints.of(context)
+                    .smallerThan('MOBILE_LARGE'))
                   ...topFlutterPackages.map((e) => Padding(
                         padding: const EdgeInsets.symmetric(vertical: 8),
                         child: PackageCard(package: e),
@@ -418,7 +430,9 @@ class TopFlutter extends StatelessWidget {
             ),
           ),
           ResponsiveVisibility(
-            hiddenWhen: const [Condition.smallerThan(name: DESKTOP)],
+            hiddenConditions: [
+              Condition.smallerThan(name: DESKTOP, value: false)
+            ],
             child: Flexible(
               child: Container(
                 margin: const EdgeInsets.only(top: 60),
@@ -448,7 +462,9 @@ class TopDart extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           ResponsiveVisibility(
-            hiddenWhen: const [Condition.smallerThan(name: DESKTOP)],
+            hiddenConditions: [
+              Condition.smallerThan(name: DESKTOP, value: false)
+            ],
             child: Flexible(
               child: Container(
                 margin: const EdgeInsets.only(top: 60),
@@ -463,8 +479,8 @@ class TopDart extends StatelessWidget {
           ResponsiveRowColumnItem(
             rowFlex: ResponsiveValue<int?>(context,
                 defaultValue: null,
-                valueWhen: [
-                  const Condition.smallerThan(name: DESKTOP, value: 1)
+                conditionalValues: [
+                  Condition.smallerThan(name: DESKTOP, value: 1)
                 ]).value,
             child: Column(
               mainAxisSize: MainAxisSize.min,
@@ -476,7 +492,7 @@ class TopDart extends StatelessWidget {
                     style: TextStyle(
                         color: textPrimaryColor, fontSize: 18, height: 1.6)),
                 const Padding(padding: EdgeInsets.only(bottom: 10)),
-                if (ResponsiveWrapper.of(context).isLargerThan(MOBILE))
+                if (ResponsiveBreakpoints.of(context).largerThan(MOBILE))
                   Align(
                     alignment: Alignment.center,
                     child: Container(
@@ -499,7 +515,8 @@ class TopDart extends StatelessWidget {
                       ),
                     ),
                   ),
-                if (ResponsiveWrapper.of(context).isSmallerThan('MOBILE_LARGE'))
+                if (ResponsiveBreakpoints.of(context)
+                    .smallerThan('MOBILE_LARGE'))
                   ...topDartPackages.map((e) => Padding(
                         padding: const EdgeInsets.symmetric(vertical: 8),
                         child: PackageCard(package: e),
@@ -566,7 +583,7 @@ class PackageCard extends StatelessWidget {
               maxLines: 3,
               overflow: TextOverflow.clip),
           const Padding(padding: EdgeInsets.only(bottom: 16)),
-          if (ResponsiveWrapper.of(context).isLargerThan('MOBILE_LARGE'))
+          if (ResponsiveBreakpoints.of(context).largerThan('MOBILE_LARGE'))
             const Spacer(),
           if (package.publisher.isNotEmpty)
             Row(

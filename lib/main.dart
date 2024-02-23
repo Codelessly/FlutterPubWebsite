@@ -13,19 +13,14 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Dart packages',
-      builder: (context, widget) => ResponsiveWrapper.builder(
-        ClampingScrollWrapper.builder(context, widget!),
-        defaultScale: true,
-        minWidth: 360,
-        defaultName: MOBILE,
-        breakpoints: [
-          const ResponsiveBreakpoint.resize(360),
-          const ResponsiveBreakpoint.resize(480, name: MOBILE),
-          const ResponsiveBreakpoint.resize(640, name: 'MOBILE_LARGE'),
-          const ResponsiveBreakpoint.resize(850, name: TABLET),
-          const ResponsiveBreakpoint.resize(1080, name: DESKTOP),
-        ],
-      ),
+      builder: (context, widget) => ResponsiveBreakpoints.builder(
+          child: ClampingScrollWrapper.builder(context, widget!),
+          breakpoints: [
+            const Breakpoint(start: 0, end: 480, name: MOBILE),
+            const Breakpoint(start: 481, end: 640, name: 'MOBILE_LARGE'),
+            const Breakpoint(start: 641, end: 1080, name: TABLET),
+            const Breakpoint(start: 1081, end: double.infinity, name: DESKTOP),
+          ]),
       home: Scaffold(
         body: SingleChildScrollView(
           scrollDirection: Axis.vertical,
@@ -36,7 +31,7 @@ class MyApp extends StatelessWidget {
             },
             child: Column(
               children: <Widget>[
-                const MenuBar(),
+                const MenuHeader(),
                 const Header(),
                 const FlutterFavorites(),
                 // Background squares image container.
