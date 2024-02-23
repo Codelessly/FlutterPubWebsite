@@ -26,18 +26,14 @@ class MenuHeader extends StatelessWidget {
         children: [
           ResponsiveVisibility(
             visible: true,
-            hiddenConditions: [
-              Condition.smallerThan(name: TABLET, value: false)
-            ],
+            hiddenConditions: [Condition.smallerThan(name: TABLET)],
             child: Expanded(
               child: Container(),
             ),
           ),
           ResponsiveVisibility(
             visible: false,
-            visibleConditions: [
-              Condition.smallerThan(name: TABLET, value: false)
-            ],
+            visibleConditions: [Condition.smallerThan(name: TABLET)],
             child: IconButton(
               onPressed: () {},
               icon: const Icon(Icons.menu,
@@ -46,9 +42,7 @@ class MenuHeader extends StatelessWidget {
           ),
           ResponsiveVisibility(
             visible: true,
-            hiddenConditions: [
-              Condition.smallerThan(name: TABLET, value: false)
-            ],
+            hiddenConditions: [Condition.smallerThan(name: TABLET)],
             child: TextButton(
               onPressed: () {},
               style: TextButton.styleFrom(
@@ -63,9 +57,7 @@ class MenuHeader extends StatelessWidget {
           ),
           ResponsiveVisibility(
             visible: true,
-            hiddenConditions: [
-              Condition.smallerThan(name: TABLET, value: false)
-            ],
+            hiddenConditions: [Condition.smallerThan(name: TABLET)],
             child: TextButton(
               onPressed: () {},
               style: TextButton.styleFrom(
@@ -266,9 +258,7 @@ class MostPopular extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           ResponsiveVisibility(
-            hiddenConditions: [
-              Condition.smallerThan(name: DESKTOP, value: false)
-            ],
+            hiddenConditions: [Condition.smallerThan(name: DESKTOP)],
             child: Flexible(
               child: ConstrainedBox(
                 constraints: const BoxConstraints(maxHeight: 280),
@@ -430,9 +420,7 @@ class TopFlutter extends StatelessWidget {
             ),
           ),
           ResponsiveVisibility(
-            hiddenConditions: [
-              Condition.smallerThan(name: DESKTOP, value: false)
-            ],
+            hiddenConditions: [Condition.smallerThan(name: DESKTOP)],
             child: Flexible(
               child: Container(
                 margin: const EdgeInsets.only(top: 60),
@@ -462,9 +450,7 @@ class TopDart extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           ResponsiveVisibility(
-            hiddenConditions: [
-              Condition.smallerThan(name: DESKTOP, value: false)
-            ],
+            hiddenConditions: [Condition.smallerThan(name: DESKTOP)],
             child: Flexible(
               child: Container(
                 margin: const EdgeInsets.only(top: 60),
