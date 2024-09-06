@@ -7,16 +7,16 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
         with:
           submodules: recursive
           token: ${{ secrets.PAT }}
-      - uses: subosito/flutter-action@v2.8.0
+      - uses: subosito/flutter-action@v2
         with:
           channel: stable
       - name: Clone deployment repo
         run: |
-          git clone --single-branch "https://${{ secrets.PAT }}@github.com/rayliverified2/Demo.git" "clone_dir"
+          git clone --single-branch "https://${{ secrets.PAT }}@github.com/rayliverified/Demo.git" "clone_dir"
           rm -rf clone_dir/flutterwebsites/pub-canvas/
           mkdir -p clone_dir/flutterwebsites/pub-canvas/
       - name: Build
