@@ -19,21 +19,21 @@ class MenuHeader extends StatelessWidget {
             horizontal: 35,
           ),
           conditionalValues: [
-            Condition.smallerThan(
-                name: TABLET, value: const EdgeInsets.symmetric(horizontal: 0))
+            const Condition.smallerThan(
+                name: TABLET, value: EdgeInsets.symmetric(horizontal: 0))
           ]).value,
       child: Row(
         children: [
           ResponsiveVisibility(
             visible: true,
-            hiddenConditions: [Condition.smallerThan(name: TABLET)],
+            hiddenConditions: const [Condition.smallerThan(name: TABLET)],
             child: Expanded(
               child: Container(),
             ),
           ),
           ResponsiveVisibility(
             visible: false,
-            visibleConditions: [Condition.smallerThan(name: TABLET)],
+            visibleConditions: const [Condition.smallerThan(name: TABLET)],
             child: IconButton(
               onPressed: () {},
               icon: const Icon(Icons.menu,
@@ -42,7 +42,7 @@ class MenuHeader extends StatelessWidget {
           ),
           ResponsiveVisibility(
             visible: true,
-            hiddenConditions: [Condition.smallerThan(name: TABLET)],
+            hiddenConditions: const [Condition.smallerThan(name: TABLET)],
             child: TextButton(
               onPressed: () {},
               style: TextButton.styleFrom(
@@ -57,7 +57,7 @@ class MenuHeader extends StatelessWidget {
           ),
           ResponsiveVisibility(
             visible: true,
-            hiddenConditions: [Condition.smallerThan(name: TABLET)],
+            hiddenConditions: const [Condition.smallerThan(name: TABLET)],
             child: TextButton(
               onPressed: () {},
               style: TextButton.styleFrom(
@@ -258,7 +258,7 @@ class MostPopular extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           ResponsiveVisibility(
-            hiddenConditions: [Condition.smallerThan(name: DESKTOP)],
+            hiddenConditions: const [Condition.smallerThan(name: DESKTOP)],
             child: Flexible(
               child: ConstrainedBox(
                 constraints: const BoxConstraints(maxHeight: 280),
@@ -271,7 +271,7 @@ class MostPopular extends StatelessWidget {
             rowFlex: ResponsiveValue<int?>(context,
                 defaultValue: null,
                 conditionalValues: [
-                  Condition.smallerThan(name: DESKTOP, value: 1)
+                  const Condition.smallerThan(name: DESKTOP, value: 1)
                 ]).value,
             child: Column(
               mainAxisSize: MainAxisSize.min,
@@ -355,7 +355,7 @@ class TopFlutter extends StatelessWidget {
             rowFlex: ResponsiveValue<int?>(context,
                 defaultValue: null,
                 conditionalValues: [
-                  Condition.smallerThan(name: DESKTOP, value: 1)
+                  const Condition.smallerThan(name: DESKTOP, value: 1)
                 ]).value,
             child: Column(
               mainAxisSize: MainAxisSize.min,
@@ -420,7 +420,7 @@ class TopFlutter extends StatelessWidget {
             ),
           ),
           ResponsiveVisibility(
-            hiddenConditions: [Condition.smallerThan(name: DESKTOP)],
+            hiddenConditions: const [Condition.smallerThan(name: DESKTOP)],
             child: Flexible(
               child: Container(
                 margin: const EdgeInsets.only(top: 60),
@@ -450,7 +450,7 @@ class TopDart extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           ResponsiveVisibility(
-            hiddenConditions: [Condition.smallerThan(name: DESKTOP)],
+            hiddenConditions: const [Condition.smallerThan(name: DESKTOP)],
             child: Flexible(
               child: Container(
                 margin: const EdgeInsets.only(top: 60),
@@ -466,7 +466,7 @@ class TopDart extends StatelessWidget {
             rowFlex: ResponsiveValue<int?>(context,
                 defaultValue: null,
                 conditionalValues: [
-                  Condition.smallerThan(name: DESKTOP, value: 1)
+                  const Condition.smallerThan(name: DESKTOP, value: 1)
                 ]).value,
             child: Column(
               mainAxisSize: MainAxisSize.min,
