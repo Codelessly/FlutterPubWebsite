@@ -22,42 +22,16 @@ class MyApp extends StatelessWidget {
             const Breakpoint(start: 1081, end: double.infinity, name: DESKTOP),
           ]),
       home: Scaffold(
-        body: SingleChildScrollView(
-          scrollDirection: Axis.vertical,
-          child: Listener(
-            onPointerDown: (event) {
-              // Clear Header search TextField focus.
-              FocusScope.of(context).requestFocus(FocusNode());
-            },
-            child: Column(
-              children: <Widget>[
-                const MenuHeader(),
-                const Header(),
-                const FlutterFavorites(),
-                // Background squares image container.
-                Container(
-                  constraints:
-                      const BoxConstraints(maxWidth: 1440, minWidth: 1440),
-                  decoration: const BoxDecoration(
-                      image: DecorationImage(
-                          image: AssetImage('assets/images/bg_squares.png'),
-                          fit: BoxFit.fitWidth,
-                          alignment: Alignment.center)),
-                  child: Column(
-                    mainAxisSize: MainAxisSize.min,
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      const MostPopular(),
-                      const TopFlutter(),
-                      const TopDart(),
-                      Container(height: 92),
-                    ],
-                  ),
-                ),
-                const Footer(),
-              ],
-            ),
-          ),
+        body: Listener(
+          onPointerDown: (event) {
+            // Clear Header search TextField focus.
+            FocusScope.of(context).requestFocus(FocusNode());
+          },
+          child: ListView.builder(
+              itemCount: blocks.length,
+              itemBuilder: (context, index) {
+                return blocks[index];
+              }),
         ),
         backgroundColor: Colors.white,
       ),
@@ -65,3 +39,29 @@ class MyApp extends StatelessWidget {
     );
   }
 }
+
+List<Widget> blocks = [
+  const MenuHeader(),
+  const Header(),
+  const FlutterFavorites(),
+  // Background squares image container.
+  Container(
+    constraints: const BoxConstraints(maxWidth: 1440, minWidth: 1440),
+    decoration: const BoxDecoration(
+        image: DecorationImage(
+            image: AssetImage('assets/images/bg_squares.png'),
+            fit: BoxFit.fitWidth,
+            alignment: Alignment.center)),
+    child: Column(
+      mainAxisSize: MainAxisSize.min,
+      crossAxisAlignment: CrossAxisAlignment.center,
+      children: [
+        const MostPopular(),
+        const TopFlutter(),
+        const TopDart(),
+        Container(height: 92),
+      ],
+    ),
+  ),
+  const Footer(),
+];
