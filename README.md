@@ -105,7 +105,7 @@ The Pub.dev Template is licensed under Zero-Clause BSD and released as Emailware
 ## Acknowledgements ❤️
 
 **Development:** 
-* [Ray Li](https://github.com/searchy2)
+* [Ray Li](https://github.com/rayliverified2)
 
 **Sponsor:** [Codelessly - Flutter App UI and Website Builder](https://codelessly.com/?utm_medium=link&utm_campaign=direct)
 
