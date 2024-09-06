@@ -11,15 +11,15 @@ dependencies:
     sdk: flutter
   responsive_framework:
     path: responsive_framework
-  google_fonts: ^6.1.0
+  google_fonts: ^6.2.1
   animations: ^2.0.11
-  url_launcher: ^6.2.5
+  url_launcher: ^6.3.0
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
   flutter_launcher_icons: ^0.13.1
-  flutter_lints: ^3.0.1
+  flutter_lints: ^4.0.0
 
 flutter_icons:
   android: true
