@@ -24,7 +24,7 @@ jobs:
           mkdir -p clone_dir/flutterwebsites/pub
       - name: Build
         run: |
-          flutter build web --release --base-href /flutterwebsites/pub/
+          flutter build web --release --base-href /flutterwebsites/pub/ --wasm --web-resources-cdn
           mv build/web/* clone_dir/flutterwebsites/pub
       - name: Get current date
         id: date
